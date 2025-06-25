@@ -14,8 +14,8 @@
   <h4>Day 1 — Reality Arsenal</h4>
   <p>The loneliness pandemic didn't happen by accident. It was engineered. Today we audit the damage—not to shame you, but to map the battlefield. You can't fight what you can't see.</p>
 
-  <video id="lesson-vid" controls playsinline preload="metadata" poster="https://your-site.pages.dev/videos/day-01-reality-arsenal.jpg">
-    <source src="https://your-site.pages.dev/videos/day-01-reality-arsenal.mp4" type="video/mp4">
+  <video id="lesson-vid" controls playsinline preload="metadata" poster="videos/day-01-reality-arsenal.jpg">
+    <source src="videos/day-01-reality-arsenal.mp4" type="video/mp4">
   </video>
 
   <div class="callout-block callout--info">
@@ -70,7 +70,7 @@
   </div>
 
   <a class="btn-primary" href="/downloads/day-1-reality-arsenal-workbook.pdf" download>
-    <i data-lucide="download"></i>&nbsp; Reality Arsenal Workbook (PDF)
+    <i data-lucide="download"></i>  Reality Arsenal Workbook (PDF)
   </a>
 </main>
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     localStorage.setItem('day1Audit', JSON.stringify(data));
     document.getElementById('save-btn').innerHTML = 'Saved <i data-lucide="check"></i>';
-    lucide.createIcons();
+    lucide.createIcons(); // Re-render icons if check icon was added
     new Audio('/audio/success-chime.mp3').play();
   });
 
@@ -104,8 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
         feedback.textContent = 'Wrong. The biggest enemy is lying to yourself.';
         feedback.style.color = 'var(--progress-start)';
       }
+      // Consider disabling further clicks on quiz options after an answer
+      // quizOpts.forEach(o => o.style.pointerEvents = 'none');
     });
   });
+
+  // Ensure Lucide icons are rendered after initial load
+  lucide.createIcons();
 });
 </script>
 </body>
