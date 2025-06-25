@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BOTGospel | Day 14 – Protocol Debrief & Advanced Operations</title>
+  <link rel="stylesheet" href="shared-style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="shared-script.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>
+</head>
+<body>
+<main>
+  <h4>Day 14 — Protocol Debrief & Advanced Operations</h4>
+  <p>The sprint ends here. We convert mission data into a precision 30-day roadmap—no hype, just metrics ? strategy ? commitment.</p>
+
+  <video id="lesson-vid" controls playsinline preload="metadata" poster="https://your-site.pages.dev/videos/day-14-protocol-debrief-advanced-operations.jpg">
+    <source src="https://your-site.pages.dev/videos/day-14-protocol-debrief-advanced-operations.mp4" type="video/mp4">
+  </video>
+
+  <div class="callout-block callout--info">
+    <div class="callout-icon"><i data-lucide="info"></i></div>
+    <div class="callout-content">
+      <h4>Final Metrics</h4>
+      <p>Data over stories. Numbers over feelings. What works stays. What doesn't gets rebuilt.</p>
+    </div>
+  </div>
+
+  <h5>1 / Mission Performance Review</h5>
+  <table class="metric-table">
+  <thead><tr><th>Metric</th><th>Your Score</th><th>Target</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>Live approaches completed</td><td><input type="number" id="live-count"></td><td>=3</td><td><span id="live-status"></span></td></tr>
+    <tr><td>SPEC invitations sent</td><td><input type="number" id="spec-count"></td><td>=1</td><td><span id="spec-status"></span></td></tr>
+    <tr><td>Hot interactions (%)</td><td><input type="number" id="hot-percent">%</td><td>Track</td><td>Data point</td></tr>
+    <tr><td>Response time (avg min)</td><td><input type="number" id="response-time"></td><td>=24hr</td><td><span id="time-status"></span></td></tr>
+  </tbody>
+  </table>
+
+  <h5 class="mt-4">2 / Biggest Leak Identification</h5>
+  <p>One leak fixed beats five fancy additions:</p>
+  <select id="leak">
+    <option value="" selected disabled>Choose primary leak</option>
+    <option value="presence">Presence - first 20 seconds</option>
+    <option value="ocq">OCQ loops - conversation engine</option>
+    <option value="spec">SPEC invites - closing leadership</option>
+    <option value="calibration">Temperature reading - wasted time</option>
+    <option value="digital">Digital parity - message balance</option>
+  </select>
+
+  <h5 class="mt-4">3 / 30-Day Evolution Plan</h5>
+  <p>Specific actions with calendar integration:</p>
+  <table class="plan-table">
+  <thead><tr><th>Week</th><th>Primary Focus</th><th>Reps/Week</th><th>Environment</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><input placeholder="Focus area"></td><td><input type="number" placeholder="5"></td><td><input placeholder="Coffee shops"></td></tr>
+    <tr><td>2</td><td><input placeholder="Focus area"></td><td><input type="number" placeholder="7"></td><td><input placeholder="Evening events"></td></tr>
+    <tr><td>3</td><td><input placeholder="Focus area"></td><td><input type="number" placeholder="10"></td><td><input placeholder="Mixed venues"></td></tr>
+    <tr><td>4</td><td><input placeholder="Focus area"></td><td><input type="number" placeholder="12"></td><td><input placeholder="Advanced scenarios"></td></tr>
+  </tbody>
+  </table>
+
+  <h5 class="mt-4">4 / Commitment Contract</h5>
+  <p>Transform intention into debt you owe yourself:</p>
+  <textarea id="commitment" rows="3" placeholder="I commit to executing this 30-day plan without excuses. If I miss a scheduled action, I will complete it within 24 hours."></textarea>
+  
+  <label for="sign-name">Full Name:</label>
+  <input type="text" id="sign-name" placeholder="Your commitment signature">
+  
+  <label for="sign-date">Date:</label>
+  <input type="date" id="sign-date">
+
+  <div class="callout-block callout--mission">
+    <div class="callout-icon"><i data-lucide="target"></i></div>
+    <div class="callout-content">
+      <h4>Final Save</h4>
+      <p>Complete metrics, identify leak, build plan, sign contract. This ends Protocol Phase 1.</p>
+      <button id="save-btn" class="btn-primary">Lock Final Data</button>
+    </div>
+  </div>
+
+  <section id="quiz">
+    <h5>Evolution Check</h5>
+    <p>What's the most important element of sustainable progress?</p>
+    <ul class="quiz-options">
+      <li data-answer="false">Perfect execution from day one</li>
+      <li data-answer="true">Consistent small actions over time</li>
+      <li data-answer="false">Waiting until you feel confident</li>
+    </ul>
+    <p id="quiz-feedback" class="mt-2"></p>
+  </section>
+
+  <div class="callout-block callout--warning">
+    <div class="callout-icon"><i data-lucide="alert-triangle"></i></div>
+    <div class="callout-content">
+      <h4>The Real War Begins Now</h4>
+      <p>Protocol training ends. Real-world application determines whether this was education or transformation.</p>
+    </div>
+  </div>
+
+  <a class="btn-primary" href="/downloads/day-14-protocol-debrief-advanced-operations-workbook.pdf" download>
+    <i data-lucide="download"></i>&nbsp; Advanced Operations Workbook (PDF)
+  </a>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const player = new Plyr('#lesson-vid', {controls: ['play','progress','mute','fullscreen']});
+
+  // Auto-calculate status based on targets
+  const updateStatus = () => {
+    const liveCount = parseInt(document.getElementById('live-count').value) || 0;
+    const specCount = parseInt(document.getElementById('spec-count').value) || 0;
+    const responseTime = parseInt(document.getElementById('response-time').value) || 0;
+
+    document.getElementById('live-status').textContent = liveCount >= 3 ? 'PASS' : 'INCOMPLETE';
+    document.getElementById('spec-status').textContent = specCount >= 1 ? 'PASS' : 'INCOMPLETE';
+    document.getElementById('time-status').textContent = responseTime <= 1440 ? 'PASS' : 'SLOW';
+  };
+
+  ['live-count', 'spec-count', 'response-time'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateStatus);
+  });
+
+  document.getElementById('save-btn').addEventListener('click', () => {
+    const planRows = [...document.querySelectorAll('.plan-table tbody tr')].map(tr => ({
+      week: tr.children[0].textContent,
+      focus: tr.children[1].querySelector('input').value.trim(),
+      reps: tr.children[2].querySelector('input').value,
+      environment: tr.children[3].querySelector('input').value.trim()
+    }));
+
+    const data = {
+      metrics: {
+        liveCount: document.getElementById('live-count').value,
+        specCount: document.getElementById('spec-count').value,
+        hotPercent: document.getElementById('hot-percent').value,
+        responseTime: document.getElementById('response-time').value
+      },
+      primaryLeak: document.getElementById('leak').value,
+      evolutionPlan: planRows,
+      commitment: document.getElementById('commitment').value.trim(),
+      signature: {
+        name: document.getElementById('sign-name').value.trim(),
+        date: document.getElementById('sign-date').value
+      },
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('day14Final', JSON.stringify(data));
+    document.getElementById('save-btn').innerHTML = 'Protocol Complete <i data-lucide="check"></i>';
+    lucide.createIcons();
+    new Audio('/audio/success-chime.mp3').play();
+  });
+
+  const opts = document.querySelectorAll('.quiz-options li');
+  const fb = document.getElementById('quiz-feedback');
+  opts.forEach(o => o.addEventListener('click', () => {
+    const ok = o.dataset.answer === 'true';
+    if(ok) {
+      new Audio('/audio/success-chime.mp3').play();
+      fb.textContent = 'Correct. Momentum beats perfection every time.';
+      fb.style.color = 'var(--accent-action)';
+    } else {
+      fb.textContent = 'Wrong. Small consistent action builds unstoppable force.';
+      fb.style.color = 'var(--progress-start)';
+    }
+  }));
+});
+</script>
+</body>
+</html>
