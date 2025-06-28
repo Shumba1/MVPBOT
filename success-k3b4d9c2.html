@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This meta tag prevents search engines from indexing this page -->
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>BOTGospel | Access Granted</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* CORE VARIABLES (copied from main stylesheet for consistency) */
+        :root {
+            --background-primary: #100C08;
+            --border-subtle: rgba(219, 224, 225, 0.1);
+            --text-primary: #F3F4F5;
+            --text-secondary: #A8B0B1;
+            --text-on-accent: #100C08;
+            --accent-action: #FF9408;
+        }
+
+        /* GENERAL STYLES */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--background-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 40px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            background-color: #1A1411; /* surface color */
+        }
+        
+        .icon-success {
+            color: var(--accent-action);
+            margin-bottom: 24px;
+        }
+        
+        h1 {
+            font-weight: 900;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        
+        p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 45ch;
+            margin: 0 auto 32px;
+        }
+
+        /* EMAIL REMINDER NOTICE */
+        .email-notice {
+            background: rgba(255, 148, 8, 0.1);
+            border: 1px solid rgba(255, 148, 8, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 0 auto 32px;
+            max-width: 50ch;
+        }
+
+        .email-notice p {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .email-notice .icon {
+            color: var(--accent-action);
+            flex-shrink: 0;
+        }
+        
+        /* BUTTON (copied from main stylesheet for consistency) */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--accent-action);
+            color: var(--text-on-accent);
+            padding: 20px 40px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 300ms ease;
+            border: none;
+        }
+        .btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 30px -10px rgba(255, 148, 8, 0.4); 
+        }
+        .btn:active { transform: translateY(1px); }
+
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <div class="icon-success">
+            <i data-lucide="shield-check" width="64" height="64"></i>
+        </div>
+        
+        <h1>Welcome. Your Access is Granted.</h1>
+        
+        <p>You are now inside the fortress. Your first mission awaits.</p>
+        
+        <!-- Email reminder notice -->
+        <div class="email-notice">
+            <p>
+                <i data-lucide="mail" width="20" height="20" class="icon"></i>
+                Download link & receipt sent to your email — check spam if needed
+            </p>
+        </div>
+        
+        <!-- This is the crucial link to the first lesson page -->
+        <a href="d1-a8b3c9x1.html" class="btn">
+            <i data-lucide="arrow-right-circle"></i>
+            Begin Day 1
+        </a>
+    </main>
+    
+    <script>
+        // Renders the Lucide icon
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
+
+

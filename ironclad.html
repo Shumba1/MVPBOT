@@ -200,8 +200,39 @@
         }
         .checklist li { display: flex; align-items: flex-start; gap: 12px; }
         .checklist .icon { color: var(--accent-action); margin-top: 4px; flex-shrink: 0; }
-        .grid-2-col { display: grid; gap: 24px; margin-top: 48px; }
-        @media (min-width: 768px) { .grid-2-col { grid-template-columns: 1fr 1fr; } }
+        
+        /* FIXED GRID STYLING FOR MOBILE */
+        .grid-2-col { 
+            display: grid; 
+            gap: 24px; 
+            margin-top: 48px; 
+        }
+        
+        @media (max-width: 767px) {
+            .grid-2-col {
+                gap: 32px; /* Increased gap for mobile */
+                margin-top: 32px; /* Reduced top margin */
+                padding: 0 8px; /* Extra breathing room on mobile */
+            }
+            
+            .grid-2-col h3 {
+                font-size: 1.375rem; /* Slightly smaller headings on mobile */
+                margin-bottom: 12px;
+            }
+            
+            .grid-2-col p {
+                line-height: 1.6; /* Better readability */
+                font-size: 0.95rem; /* Slightly smaller text on mobile */
+                margin-bottom: 0;
+            }
+        }
+        
+        @media (min-width: 768px) { 
+            .grid-2-col { 
+                grid-template-columns: 1fr 1fr; 
+                padding: 0; /* Remove extra padding on desktop */
+            } 
+        }
         
         .feature-card {
             background: var(--background-surface); padding: 24px;
@@ -285,7 +316,7 @@
         <div class="container">
             <p class="text-accent" style="font-weight:700;margin-bottom:1rem">BOTGOSPEL PROTOCOL // 001</p>
             <h1>IRONCLAD COMMAND</h1>
-            <p class="lead" style="margin-top:16px">Forge social dominance in 14 days. No scripts, no sleaze—just a measurable, repeatable operating system for command.</p>
+            <p class="lead" style="margin-top:16px">Forge social dominance in 14 days. No scripts, no sleaze — just a measurable, repeatable operating system for command.</p>
             
             <!-- ====================================================================== -->
             <!-- HERO CTA BUTTON - UPDATED FOR PAYHIP CHECKOUT -->
@@ -303,7 +334,6 @@
         <!-- SECTION: WHO IS THIS FOR (Pain Points) -->
         <section class="container">
             <h2>This Call to Arms is for Men <span class="text-accent">Done</span> With...</h2>
-            <p class="lead center-text">If you respect yourself and crave systems over superstition, you are ready for the forge.</p>
             <ul class="checklist grid-2-col">
                 <li><i data-lucide="x-circle" class="icon"></i> <span>Basement-level match rates and the endless misery of swipe-app roulette.</span></li>
                 <li><i data-lucide="x-circle" class="icon"></i> <span>Guru fluff that sells feelings but never delivers a fucking formula.</span></li>
@@ -382,7 +412,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3">Each day delivers focused video lessons, clear objectives, and a downloadable PDF “Combat Workbook” for offline execution.</td>
+                        <td colspan="3">Each day delivers focused video lessons, clear objectives, and a downloadable PDF "Combat Workbook" for offline execution.</td>
                     </tr>
                 </tfoot>
             </table>
@@ -391,7 +421,7 @@
         <!-- SECTION: HOW IT WORKS -->
         <section class="section section-divider container">
             <h2>From Blueprint to Battlefield</h2>
-            <p class="lead center-text">The 14-Day Forge gives you the complete blueprint. Here’s how you turn it into real-world skill.</p>
+            <p class="lead center-text">The 14-Day Forge gives you the complete blueprint. Here's how you turn it into real-world skill.</p>
             
             <div class="grid-2-col">
                 <div>
@@ -408,7 +438,7 @@
                 <h4 style="text-align: center; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">Your Forge Arsenal Includes:</h4>
                 <ul class="checklist" style="max-width: 600px; margin-left: auto; margin-right: auto;">
                     <li><i data-lucide="captions" class="icon"></i> <span>Lifetime access to all on-demand video lessons with full captions, streamable on any device.</span></li>
-                    <li><i data-lucide="file-text" class="icon"></i> <span>A downloadable “Combat Workbook” for every module to execute your missions offline.</span></li>
+                    <li><i data-lucide="file-text" class="icon"></i> <span>A downloadable "Combat Workbook" for every module to execute your missions offline.</span></li>
                 </ul>
             </div>
         </section>
@@ -462,7 +492,7 @@
                 </div>
                 
                 <p class="lead" style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-secondary);">
-                    Complete every mission. If you don’t see a measurable lift in confidence, conversation skill, or social command, we refund 100% — no questions, no hassle.
+                    Complete every mission. If you don't see a measurable lift in confidence, conversation skill, or social command, we refund 100% — no questions, no hassle.
                 </p>
                 
                 <!-- ====================================================================== -->
@@ -510,3 +540,6 @@
     </script>
 </body>
 </html>
+
+
+
