@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOTGospel | Day 7 – Week-1 Integration</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="shared-style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="shared-script.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>
+</head>
+<body>
+
+<!-- COMMAND BAR (v4.4) -->
+<header class="command-bar">
+  <div class="command-bar-title">
+    <h3>Day 7: Week-1 Integration</h3>
+    <span>Ironclad Command</span>
+  </div>
+  <div class="battle-plan-menu">
+    <button id="battle-plan-btn" class="btn-secondary"><i data-lucide="map"></i> Battle Plan</button>
+    <div id="battle-plan-dropdown" class="battle-plan-dropdown">
+      <h6>Phase 1: Internal Command</h6>
+      <ul>
+        <li><a href="d1-a8b3c9x1.html">Day 1: Reality Arsenal Audit</a></li>
+        <li><a href="d2-b7c4d8y2.html">Day 2: Mission Forge & War Plan</a></li>
+        <li><a href="d3-c6d5e7z3.html">Day 3: Failure Forensics</a></li>
+        <li><a href="d4-d5e6f4a4.html">Day 4: Presence Command</a></li>
+        <li><a href="d5-e4f5g3b5.html">Day 5: The Authority Stack</a></li>
+        <li><a href="d6-f3g4h2c6.html">Day 6: Social Warm-Up Arsenal</a></li>
+        <li><a href="d7-g2h3i1d7.html" class="active">Day 7: Week-1 Integration</a></li>
+      </ul>
+      <div class="dropdown-locked">
+        <i data-lucide="lock"></i>
+        <span>Phase 2 unlocks after Day 7.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h4>Day 7 — Week-1 Integration</h4>
+  <p>Six days in, your foundation is poured. Today we measure the concrete, seal the micro-cracks, and set targets for Week 2's external execution.</p>
+
+<video id="lesson-vid" controls playsinline preload="metadata" poster="videos/day-07-week-1-integration.jpg">
+  <source src="videos/day-07-week-1-integration.mp4" type="video/mp4">
+</video>
+
+  <div class="callout-block callout--info">
+    <div class="callout-icon"><i data-lucide="info"></i></div>
+    <div class="callout-content">
+      <h4>Week-1 Arsenal</h4>
+      <ul>
+        <li><strong>Day 1 Arsenal</strong> – brutal reality audit</li>
+        <li><strong>Day 2 Mission</strong> – laser-targeted warfare</li>
+        <li><strong>Day 3 Forensics</strong> – failure architecture</li>
+        <li><strong>Day 4 Presence</strong> – Tri-Check system</li>
+        <li><strong>Day 5 Authority</strong> – body/voice stack</li>
+        <li><strong>Day 6 Warm-Up</strong> – desensitized operations</li>
+      </ul>
+    </div>
+  </div>
+
+  <h5>1 / Mission Completion Scorecard</h5>
+  <p>Mark each task ? when genuinely executed; leave blank if partial.</p>
+  <table class="score-table">
+  <thead><tr><th>Day</th><th>Task</th><th>?</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Reality Arsenal lists saved</td><td><input type="checkbox" id="d1"></td></tr>
+    <tr><td>2</td><td>Mission & 30-day plan forged</td><td><input type="checkbox" id="d2"></td></tr>
+    <tr><td>3</td><td>Three conversation autopsies</td><td><input type="checkbox" id="d3"></td></tr>
+    <tr><td>4</td><td>Tri-Check executed in 3 environments</td><td><input type="checkbox" id="d4"></td></tr>
+    <tr><td>5</td><td>Authority Stack drilled ×2</td><td><input type="checkbox" id="d5"></td></tr>
+    <tr><td>6</td><td>Tier-1 operations ×5 logged</td><td><input type="checkbox" id="d6"></td></tr>
+  </tbody>
+  </table>
+
+  <h5 class="mt-4">2 / Power Level Assessment</h5>
+  <p>Rate each system 1-5 (1 = needs work, 5 = locked and loaded):</p>
+  <table class="rating-table">
+  <thead><tr><th>System</th><th>Power Level</th></tr></thead>
+  <tbody>
+    <tr><td>Presence Command</td><td><select id="presence"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr>
+    <tr><td>Authority Projection</td><td><select id="authority"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr>
+    <tr><td>Mission Clarity</td><td><select id="mission"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr>
+    <tr><td>Social Tension (reverse)</td><td><select id="tension"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr>
+  </tbody>
+  </table>
+
+  <h5 class="mt-4">3 / Pattern Intelligence</h5>
+  <p>Extract one tactical insight from Week 1 (single sentence):</p>
+  <textarea id="pattern" rows="2" placeholder="Example: My voice control improves 80% after 3-breath reset."></textarea>
+
+  <h5 class="mt-4">4 / Week 2 Combat Contract</h5>
+  <p>Two specific objectives for next seven days:</p>
+  <textarea id="commit1" rows="2" placeholder="Objective 1: Three conversation engines daily"></textarea>
+  <textarea id="commit2" rows="2" placeholder="Objective 2: Two SPEC invitations by Friday"></textarea>
+
+  <div class="callout-block callout--mission">
+    <div class="callout-icon"><i data-lucide="target"></i></div>
+    <div class="callout-content">
+      <h4>Mission Brief</h4>
+      <p>Complete scorecard, rate all systems, extract pattern, write commitments, save draft. Tomorrow we launch external execution.</p>
+      <button id="save-btn" class="btn-primary">Save Draft</button>
+    </div>
+  </div>
+
+  <section id="quiz">
+    <h5>Integration Check</h5>
+    <p>What's the most important Week 1 foundation element?</p>
+    <ul class="quiz-options">
+      <li data-answer="false">Learning all the techniques perfectly</li>
+      <li data-answer="true">Building systematic awareness instead of relying on luck</li>
+      <li data-answer="false">Memorizing conversation scripts</li>
+    </ul>
+    <p id="quiz-feedback" class="mt-2"></p>
+  </section>
+
+  <div class="callout-block callout--warning">
+    <div class="callout-icon"><i data-lucide="alert-triangle"></i></div>
+    <div class="callout-content">
+      <h4>No Perfectionism Paralysis</h4>
+      <p>Empty checkboxes mean incomplete foundation. Schedule catch-up before advancing to Week 2.</p>
+    </div>
+  </div>
+
+  <a class="btn-primary" href="/downloads/day-7-week-1-integration-workbook.pdf" download>
+    <i data-lucide="download"></i>  Week-1 Integration Workbook (PDF)
+  </a>
+</main>
+
+<!-- MISSION FOOTER (v4.4) -->
+<footer class="mission-footer">
+  <a href="d6-f3g4h2c6.html" class="btn-secondary">
+    <i data-lucide="arrow-left"></i> Prev: Day 6
+  </a>
+  <a href="d8-h5i6j7k8.html" class="btn-primary">
+    Launch Phase 2 <i data-lucide="arrow-right"></i>
+  </a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const player = new Plyr('#lesson-vid', {controls: ['play','progress','mute','fullscreen']});
+
+  document.getElementById('save-btn').addEventListener('click', () => {
+    const data = {
+      completion: {
+        d1: document.getElementById('d1').checked,
+        d2: document.getElementById('d2').checked,
+        d3: document.getElementById('d3').checked,
+        d4: document.getElementById('d4').checked,
+        d5: document.getElementById('d5').checked,
+        d6: document.getElementById('d6').checked
+      },
+      ratings: {
+        presence: document.getElementById('presence').value,
+        authority: document.getElementById('authority').value,
+        mission: document.getElementById('mission').value,
+        tension: document.getElementById('tension').value
+      },
+      pattern: document.getElementById('pattern').value.trim(),
+      commitments: {
+        commit1: document.getElementById('commit1').value.trim(),
+        commit2: document.getElementById('commit2').value.trim()
+      },
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('day7Integration', JSON.stringify(data));
+    document.getElementById('save-btn').innerHTML = 'Saved <i data-lucide="check"></i>';
+    lucide.createIcons();
+    new Audio('/audio/success-chime.mp3').play();
+  });
+
+  const opts = document.querySelectorAll('.quiz-options li');
+  const fb = document.getElementById('quiz-feedback');
+  opts.forEach(o => o.addEventListener('click', () => {
+    const ok = o.dataset.answer === 'true';
+    if(ok) {
+      new Audio('/audio/success-chime.mp3').play();
+      fb.textContent = 'Correct. Systems beat superstition every time.';
+      fb.style.color = 'var(--accent-action)';
+    } else {
+      fb.textContent = 'Wrong. Awareness and systems are the real foundation.';
+      fb.style.color = 'var(--progress-start)';
+    }
+  }));
+});
+</script>
+</body>
+</html>

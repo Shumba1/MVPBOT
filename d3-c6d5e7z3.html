@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BOTGospel | Day 3 – Failure Forensics</title>
+  <link rel="stylesheet" href="shared-style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="shared-script.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>
+</head>
+<body>
+<main>
+  <h4>Day 3 — Failure Forensics</h4>
+  <p>Every failed chat leaves footprints. Today we read them so you never trip in the dark again. Engineers trace failures. Gamblers blame luck. Choose your tribe.</p>
+
+  <div class="callout-block callout--info">
+    <div class="callout-icon"><i data-lucide="info"></i></div>
+    <div class="callout-content">
+      <h4>3-Tier Architecture — Combat Primer</h4>
+      <table class="tier-table">
+        <thead><tr><th>Tier</th><th>What it controls</th><th>30-second example</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Presence</strong></td>
+            <td>First 20 seconds—body language, voice tone, eye contact</td>
+            <td>You walk in, shoulders back, calm "Hey—looks like deadline face?"</td>
+          </tr>
+          <tr>
+            <td><strong>Loop</strong></td>
+            <td>Conversation engine—OCQ cycles that keep both sides invested</td>
+            <td>"Vintage camera—film beats pixels—best shot you've taken?"</td>
+          </tr>
+          <tr>
+            <td><strong>Direction</strong></td>
+            <td>Clear next step—SPEC invite that stops 'nice-meeting-you' limbo</td>
+            <td>"Photowalk in Old Town, Sat 11-12:30; you'll hit gym after—yes by Thu?"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<video id="lesson-vid" controls playsinline preload="metadata" poster="videos/day-03-failure-forensics.jpg">
+  <source src="videos/day-03-failure-forensics.mp4" type="video/mp4">
+</video>
+
+  <h5>1 / Mindset Warfare</h5>
+  <p>Mark which operating system you've been running:</p>
+  <label><input type="radio" name="mindset" value="luck"> Luck-Based ("Hope I'm smooth today")</label><br>
+  <label><input type="radio" name="mindset" value="engineering"> Engineering ("Which tier collapsed?")</label>
+
+  <h5 class="mt-4">2 / Three-Crash Autopsy</h5>
+  <p>Think back to your last three conversation crashes. Summarize briefly, then tag the failing tier.</p>
+  <table class="audit-table">
+  <thead><tr><th>#</th><th>30-word crash summary</th><th>Tier that collapsed</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><textarea rows="2" id="conv1"></textarea></td><td><select id="tier1"><option value="" disabled selected>Select tier</option><option value="Presence">Presence</option><option value="Loop">Loop</option><option value="Direction">Direction</option></select></td></tr>
+    <tr><td>2</td><td><textarea rows="2" id="conv2"></textarea></td><td><select id="tier2"><option value="" disabled selected>Select tier</option><option value="Presence">Presence</option><option value="Loop">Loop</option><option value="Direction">Direction</option></select></td></tr>
+    <tr><td>3</td><td><textarea rows="2" id="conv3"></textarea></td><td><select id="tier3"><option value="" disabled selected>Select tier</option><option value="Presence">Presence</option><option value="Loop">Loop</option><option value="Direction">Direction</option></select></td></tr>
+  </tbody>
+  </table>
+
+  <div class="callout-block callout--mission">
+    <div class="callout-icon"><i data-lucide="target"></i></div>
+    <div class="callout-content">
+      <h4>Mission Brief</h4>
+      <p>Complete all three autopsies, hit <em>Save Draft</em>. Tomorrow we rebuild Tier 1—Presence—with military precision.</p>
+      <button id="save-btn" class="btn-primary">Save Draft</button>
+    </div>
+  </div>
+
+  <section id="quiz">
+    <h5>Architecture Check</h5>
+    <p>What kills conversations faster than anything else?</p>
+    <ul class="quiz-options">
+      <li data-answer="false">Running out of clever lines</li>
+      <li data-answer="true">Relying on luck instead of systematic architecture</li>
+      <li data-answer="false">Not using enough emojis</li>
+    </ul>
+    <p id="quiz-feedback" class="mt-2"></p>
+  </section>
+
+  <div class="callout-block callout--warning">
+    <div class="callout-icon"><i data-lucide="alert-triangle"></i></div>
+    <div class="callout-content">
+      <h4>No Victim Stories</h4>
+      <p>This is data collection, not therapy session. Blame kills improvement. Facts fuel evolution.</p>
+    </div>
+  </div>
+
+  <a class="btn-primary" href="/downloads/day-3-failure-forensics-workbook.pdf" download>
+    <i data-lucide="download"></i>&nbsp; Failure Forensics Workbook (PDF)
+  </a>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const player = new Plyr('#lesson-vid', {controls: ['play','progress','mute','fullscreen']});
+
+  document.getElementById('save-btn').addEventListener('click', () => {
+    const data = {
+      mindset: document.querySelector('input[name="mindset"]:checked')?.value || '',
+      conv1: document.getElementById('conv1').value.trim(), 
+      tier1: document.getElementById('tier1').value,
+      conv2: document.getElementById('conv2').value.trim(), 
+      tier2: document.getElementById('tier2').value,
+      conv3: document.getElementById('conv3').value.trim(), 
+      tier3: document.getElementById('tier3').value,
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('day3Autopsy', JSON.stringify(data));
+    document.getElementById('save-btn').innerHTML = 'Saved <i data-lucide="check"></i>';
+    lucide.createIcons();
+    new Audio('/audio/success-chime.mp3').play();
+  });
+
+  const opts = document.querySelectorAll('.quiz-options li');
+  const feedback = document.getElementById('quiz-feedback');
+  opts.forEach(o => o.addEventListener('click', () => {
+    const ok = o.dataset.answer === 'true';
+    if (ok) {
+      new Audio('/audio/success-chime.mp3').play();
+      feedback.textContent = 'Correct. Architecture beats luck every time.';
+      feedback.style.color = 'var(--accent-action)';
+    } else {
+      feedback.textContent = 'Wrong. Structure beats charm every damn time.';
+      feedback.style.color = 'var(--progress-start)';
+    }
+  }));
+});
+</script>
+</body>
+</html>

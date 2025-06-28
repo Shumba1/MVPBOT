@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOTGospel | Day 6 – Social Warm-Up Arsenal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="shared-style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="shared-script.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>
+</head>
+<body>
+
+<!-- COMMAND BAR (v4.4) -->
+<header class="command-bar">
+  <div class="command-bar-title">
+    <h3>Day 6: Social Warm-Up Arsenal</h3>
+    <span>Ironclad Command</span>
+  </div>
+  <div class="battle-plan-menu">
+    <button id="battle-plan-btn" class="btn-secondary"><i data-lucide="map"></i> Battle Plan</button>
+    <div id="battle-plan-dropdown" class="battle-plan-dropdown">
+      <h6>Phase 1: Internal Command</h6>
+      <ul>
+        <li><a href="d1-a8b3c9x1.html">Day 1: Reality Arsenal Audit</a></li>
+        <li><a href="d2-b7c4d8y2.html">Day 2: Mission Forge & War Plan</a></li>
+        <li><a href="d3-c6d5e7z3.html">Day 3: Failure Forensics</a></li>
+        <li><a href="d4-d5e6f4a4.html">Day 4: Presence Command</a></li>
+        <li><a href="d5-e4f5g3b5.html">Day 5: The Authority Stack</a></li>
+        <li><a href="d6-f3g4h2c6.html" class="active">Day 6: Social Warm-Up Arsenal</a></li>
+        <li><a href="d7-g2h3i1d7.html">Day 7: Week-1 Integration</a></li>
+      </ul>
+      <div class="dropdown-locked">
+        <i data-lucide="lock"></i>
+        <span>Phase 2 unlocks after Day 7.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h4>Day 6 — Social Warm-Up Arsenal</h4>
+  <p>Nervous system still screaming on cold approaches? We're about to desensitize it. Mission: three tiers of low-stakes operations that prove most strangers are neutral or friendly, not predators.</p>
+
+<video id="lesson-vid" controls playsinline preload="metadata" poster="videos/day-06-social-warm-up-arsenal.jpg">
+  <source src="videos/day-06-social-warm-up-arsenal.mp4" type="video/mp4">
+</video>
+
+  <div class="callout-block callout--info">
+    <div class="callout-icon"><i data-lucide="info"></i></div>
+    <div class="callout-content">
+      <h4>The Warm-Up Ladder</h4>
+      <p><strong>Tier 1:</strong> acknowledge existence. <strong>Tier 2:</strong> 30-60 second micro-chat. <strong>Tier 3:</strong> 3-5 minute genuine conversation. Today we execute Tier 1 five times.</p>
+    </div>
+  </div>
+
+  <h5>1 / Tier 1 – "Acknowledge & Move" Challenge</h5>
+  <p>Target: five brief acknowledgments before midnight. No compliments, no follow-ups—just eye contact, smile, "morning," advance.</p>
+  <table class="warmup-table">
+  <thead><tr><th>#</th><th>Location</th><th>Response (Neutral / Positive)</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><input></td><td><select><option></option><option>Neutral</option><option>Positive</option></select></td></tr>
+    <tr><td>2</td><td><input></td><td><select><option></option><option>Neutral</option><option>Positive</option></select></td></tr>
+    <tr><td>3</td><td><input></td><td><select><option></option><option>Neutral</option><option>Positive</option></select></td></tr>
+    <tr><td>4</td><td><input></td><td><select><option></option><option>Neutral</option><option>Positive</option></select></td></tr>
+    <tr><td>5</td><td><input></td><td><select><option></option><option>Neutral</option><option>Positive</option></select></td></tr>
+  </tbody>
+  </table>
+
+  <h5 class="mt-4">2 / Tension Assassination</h5>
+  <p>Before first operation, rate tension 1-5. After fifth, rate again.</p>
+  <label for="anx-before">Before: </label><select id="anx-before"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+  <label for="anx-after" class="ml-2">After: </label><select id="anx-after"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+
+  <h5 class="mt-4">3 / Battlefield Intelligence (three bullet points)</h5>
+  <textarea id="reflection" rows="4" placeholder="Biggest surprise? Common reaction? Internal shift?"></textarea>
+
+  <div class="callout-block callout--mission">
+    <div class="callout-icon"><i data-lucide="target"></i></div>
+    <div class="callout-content">
+      <h4>Mission Brief</h4>
+      <p>Complete all five operations, log the table, rate tension drop, write intelligence, save draft.</p>
+      <button id="save-btn" class="btn-primary">Save Draft</button>
+    </div>
+  </div>
+
+  <section id="quiz">
+    <h5>Warm-Up Check</h5>
+    <p>Why does Tier 1 start with <em>no</em> compliments or questions?</p>
+    <ul class="quiz-options">
+      <li data-answer="true">It resets threat response without conversational load</li>
+      <li data-answer="false">Because compliments are manipulative</li>
+      <li data-answer="false">It makes you look mysterious</li>
+    </ul>
+    <p id="quiz-feedback" class="mt-2"></p>
+  </section>
+
+  <div class="callout-block callout--warning">
+    <div class="callout-icon"><i data-lucide="alert-triangle"></i></div>
+    <div class="callout-content">
+      <h4>No Scorekeeping, No Self-Hate</h4>
+      <p>If someone ignores you, that's intel—not a verdict on your worth. Move to next operation.</p>
+    </div>
+  </div>
+
+  <a class="btn-primary" href="/downloads/day-6-social-warm-up-arsenal-workbook.pdf" download>
+    <i data-lucide="download"></i>  Social Warm-Up Arsenal Workbook (PDF)
+  </a>
+</main>
+
+<!-- MISSION FOOTER (v4.4) -->
+<footer class="mission-footer">
+  <a href="d5-e4f5g3b5.html" class="btn-secondary">
+    <i data-lucide="arrow-left"></i> Prev: Day 5
+  </a>
+  <a href="d7-g2h3i1d7.html" class="btn-primary">
+    Next: Day 7 <i data-lucide="arrow-right"></i>
+  </a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const player = new Plyr('#lesson-vid', {controls: ['play','progress','mute','fullscreen']});
+
+  document.getElementById('save-btn').addEventListener('click', () => {
+    const rows = [...document.querySelectorAll('.warmup-table tbody tr')].map(tr => ({
+      loc: tr.children[1].querySelector('input').value.trim(),
+      resp: tr.children[2].querySelector('select').value
+    }));
+    const data = {
+      rows,
+      anxBefore: document.getElementById('anx-before').value,
+      anxAfter: document.getElementById('anx-after').value,
+      reflection: document.getElementById('reflection').value.trim(),
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('day6Warmup', JSON.stringify(data));
+    document.getElementById('save-btn').innerHTML = 'Saved <i data-lucide="check"></i>';
+    lucide.createIcons();
+    new Audio('/audio/success-chime.mp3').play();
+  });
+
+  const opts = document.querySelectorAll('.quiz-options li');
+  const fb = document.getElementById('quiz-feedback');
+  opts.forEach(o => o.addEventListener('click', () => {
+    const ok = o.dataset.answer === 'true';
+    if(ok) {
+      new Audio('/audio/success-chime.mp3').play();
+      fb.textContent = 'Correct. We desensitize first, then add complexity.';
+      fb.style.color = 'var(--accent-action)';
+    } else {
+      fb.textContent = 'Wrong. The goal is nervous system reset, not mystery.';
+      fb.style.color = 'var(--progress-start)';
+    }
+  }));
+});
+</script>
+</body>
+</html>

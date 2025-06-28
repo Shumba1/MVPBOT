@@ -17,3 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.style.opacity = '1';
 
 });
+
+/* ==========================================================================
+   COMMAND BAR DROPDOWN LOGIC (v4.4)
+   ========================================================================== */
+const menuButton = document.getElementById('battle-plan-btn');
+const dropdownMenu = document.getElementById('battle-plan-dropdown');
+
+if (menuButton && dropdownMenu) {
+  menuButton.addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent click from bubbling up to document
+    dropdownMenu.classList.toggle('active');
+  });
+
+  // Close the dropdown if clicking outside of it
+  document.addEventListener('click', (event) => {
+    if (dropdownMenu.classList.contains('active') && !menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.classList.remove('active');
+    }
+  });
+}

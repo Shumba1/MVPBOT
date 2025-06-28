@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTGospel | Ironclad Command: The 14-Day Reality Forge</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- ====================================================================== -->
+    <!-- PAYHIP SCRIPT - REQUIRED FOR EMBEDDED CHECKOUT -->
+    <!-- ====================================================================== -->
+    <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+    <!-- ====================================================================== -->
+
+    <style>
+        /* ==========================================================================
+           IRONCLAD COMMAND - Stylesheet V3.0 (Final w/ Nav)
+           ========================================================================== */
+
+        /* 1. CORE FOUNDATION & VARIABLES */
+        :root {
+            --background-primary: #100C08;
+            --background-surface: #1A1411;
+            --border-subtle: rgba(219, 224, 225, 0.1);
+            --text-primary: #F3F4F5;
+            --text-secondary: #A8B0B1;
+            --text-on-accent: #100C08;
+            --accent-action: #FF9408;
+            --progress-start: #CA3F16;
+        }
+
+        /* 2. GENERAL BODY & LAYOUT */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--background-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        
+        /* 3. TYPOGRAPHY & HEADINGS */
+        h1, h2, h3, h4 {
+            font-weight: 900;
+            line-height: 1.2;
+            color: var(--text-primary);
+            text-wrap: balance;
+        }
+        h1 { font-size: clamp(2.5rem, 6vw + 1rem, 4rem); }
+        h2 { font-size: clamp(2rem, 4vw + 1rem, 3rem); text-align: center; }
+        h3 { font-size: clamp(1.5rem, 2vw + 1rem, 2rem); }
+        p { margin-bottom: 1.5em; max-width: 65ch; }
+        p.lead { font-size: 1.25rem; color: var(--text-secondary); }
+        .text-accent { color: var(--accent-action); }
+        .center-text { text-align: center; margin-left: auto; margin-right: auto; }
+
+        /* 4. NAVIGATION */
+        .main-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(16, 12, 8, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 16px 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 200ms ease;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-action);
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* 5. LAYOUT & BUTTONS */
+        .section { padding: 80px 0; }
+        .section-divider { border-top: 1px solid var(--border-subtle); }
+        .page-header { padding: 100px 0 60px; text-align: center; }
+        .page-header h1 { letter-spacing: -0.02em; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--accent-action);
+            color: var(--text-on-accent);
+            padding: 20px 40px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 300ms ease;
+            border: none;
+            width: 100%;
+            max-width: 350px;
+        }
+        .btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 30px -10px rgba(255, 148, 8, 0.4); 
+        }
+        .btn:active { transform: translateY(1px); }
+
+        /* 6. SHARED COMPONENTS */
+        .callout-block {
+            display: flex; gap: 16px; background-color: var(--background-surface);
+            padding: 24px; margin: 32px 0; border-radius: 8px; border-left: 4px solid;
+        }
+        .callout-icon { flex-shrink: 0; margin-top: 2px; }
+        .callout-block h4 { font-family: 'Inter', sans-serif; font-size: 1.1rem; margin: 0 0 8px; color: var(--text-primary); font-weight: 700; }
+        .callout-block p { color: var(--text-secondary); margin: 0; font-size: 0.95rem; }
+        .callout--info { border-color: var(--accent-action); }
+        .callout--info .callout-icon { color: var(--accent-action); }
+        .callout--warning { border-color: var(--progress-start); }
+        .callout--warning .callout-icon { color: var(--progress-start); }
+
+        .battle-plan-table {
+            width: 100%; border-collapse: collapse; margin: 48px 0; background-color: var(--background-surface);
+            border: 1px solid var(--border-subtle); border-radius: 8px; overflow: hidden;
+        }
+        .battle-plan-table th, .battle-plan-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border-subtle); }
+        .battle-plan-table thead { background-color: var(--background-primary); color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .battle-plan-table tbody tr:last-child td { border-bottom: none; }
+        .battle-plan-table td.day-number { color: var(--accent-action); font-weight: 700; text-align: center; }
+        .phase-header td { background-color: var(--background-primary); color: var(--accent-action); font-weight: 700; }
+        .battle-plan-table tfoot { font-style: italic; font-size: 0.9rem; color: var(--text-secondary); }
+
+        .price-section {
+            background-color: var(--background-surface);
+            padding: 48px 32px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-subtle);
+        }
+        .price-tag { 
+            font-size: 4.5rem; 
+            font-weight: 900; 
+            line-height: 1; 
+            color: var(--accent-action);
+            margin: 0.5rem 0;
+        }
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 148, 8, 0.15);
+            color: var(--accent-action);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin: 1.5rem 0;
+        }
+
+        /* 7. STRUCTURED COMPONENTS */
+        .checklist {
+            list-style: none; padding: 0; margin: 32px 0;
+            display: grid; gap: 16px;
+        }
+        .checklist li { display: flex; align-items: flex-start; gap: 12px; }
+        .checklist .icon { color: var(--accent-action); margin-top: 4px; flex-shrink: 0; }
+        .grid-2-col { display: grid; gap: 24px; margin-top: 48px; }
+        @media (min-width: 768px) { .grid-2-col { grid-template-columns: 1fr 1fr; } }
+        
+        .feature-card {
+            background: var(--background-surface); padding: 24px;
+            border-radius: 8px; border: 1px solid var(--border-subtle);
+        }
+        .feature-card h4 { display: flex; align-items: center; gap: 8px; font-size: 1.2rem; color: var(--text-primary); }
+        .feature-card p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0; }
+
+        .objection-grid {
+            display: grid;
+            gap: 24px;
+            margin-top: 48px;
+        }
+        @media (min-width: 768px) { .objection-grid { grid-template-columns: 1fr 1fr; } }
+        
+        .objection-card {
+            background-color: var(--background-surface);
+            padding: 24px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-action);
+        }
+        .objection-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .objection-card p {
+             font-size: 0.95rem; 
+             color: var(--text-secondary); 
+             margin-bottom: 0; 
+        }
+        
+        /* 8. RESPONSIVE & MEDIA QUERIES */
+        @media (max-width: 767px) {
+            body.nav-open { overflow: hidden; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: fixed; /* Changed from absolute for better viewport handling */
+                top: 73px; /* Adjust based on nav height */
+                left: 0;
+                right: 0;
+                background-color: var(--background-surface);
+                flex-direction: column;
+                padding: 32px;
+                text-align: center;
+                gap: 32px;
+                height: calc(100vh - 73px);
+                border-top: 1px solid var(--border-subtle);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1.5rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <!-- IMPORTANT: Make sure the 'images/logo.svg' path is correct for your project structure -->
+                <img src="images/logo.svg" alt="BOTGospel Logo" class="logo-image">
+            </a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ironclad.html" class="active">The Course</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+                <i data-lucide="menu" width="32" height="32"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-header">
+        <div class="container">
+            <p class="text-accent" style="font-weight:700;margin-bottom:1rem">BOTGOSPEL PROTOCOL // 001</p>
+            <h1>IRONCLAD COMMAND</h1>
+            <p class="lead" style="margin-top:16px">Forge social dominance in 14 days. No scripts, no sleaze—just a measurable, repeatable operating system for command.</p>
+            
+            <!-- ====================================================================== -->
+            <!-- HERO CTA BUTTON - UPDATED FOR PAYHIP CHECKOUT -->
+            <!-- ====================================================================== -->
+            <a href="https://payhip.com/b/UOZYP" class="btn payhip-buy-button" data-theme="none" data-product="UOZYP" style="margin-top:32px">
+                <i data-lucide="rocket"></i> 
+                START YOUR 14-DAY FORGE
+            </a>
+            <!-- ====================================================================== -->
+            
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION: WHO IS THIS FOR (Pain Points) -->
+        <section class="container">
+            <h2>This Call to Arms is for Men <span class="text-accent">Done</span> With...</h2>
+            <p class="lead center-text">If you respect yourself and crave systems over superstition, you are ready for the forge.</p>
+            <ul class="checklist grid-2-col">
+                <li><i data-lucide="x-circle" class="icon"></i> <span>Basement-level match rates and the endless misery of swipe-app roulette.</span></li>
+                <li><i data-lucide="x-circle" class="icon"></i> <span>Guru fluff that sells feelings but never delivers a fucking formula.</span></li>
+                <li><i data-lucide="x-circle" class="icon"></i> <span>Freezing on the approach, then replaying the failure for the rest of the night.</span></li>
+                <li><i data-lucide="x-circle" class="icon"></i> <span>Being the "nice-guy" pushover everyone takes for granted.</span></li>
+            </ul>
+        </section>
+
+        <!-- SECTION: MEASURABLE WINS (The Transformation) -->
+        <section class="section section-divider container">
+            <h2>What You Will Forge</h2>
+            <p class="lead center-text">Concrete abilities you'll develop through the protocol:</p>
+            <div class="grid-2-col">
+                <div class="feature-card">
+                    <h4><i data-lucide="move-3d" class="text-accent"></i> Presence Command</h4>
+                    <p>Own any space within 20 seconds using posture, eye contact, and energy control - no words needed.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i data-lucide="message-circle" class="text-accent"></i> Conversation Engine</h4>
+                    <p>Never run out of things to say with the OCQ system that creates natural flow in any interaction.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i data-lucide="calendar-check" class="text-accent"></i> Decisive Planning</h4>
+                    <p>Turn "maybe" into "yes" with the SPEC system for creating concrete plans that show leadership.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i data-lucide="signal" class="text-accent"></i> Social Radar</h4>
+                    <p>Read interest levels accurately to escalate with confidence or exit with dignity when needed.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i data-lucide="users" class="text-accent"></i> Group Dominance</h4>
+                    <p>Navigate social groups effortlessly, disarm obstacles, and connect with your target.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i data-lucide="smartphone" class="text-accent"></i> Digital Command</h4>
+                    <p>Maintain attraction through text with the Digital Combat Manual that preserves chemistry.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION: BATTLE PLAN (The Curriculum) -->
+        <section class="section section-divider container">
+            <h2 class="center-text">The 14-Day Battle Plan</h2>
+             <div class="callout-block callout--warning">
+                <div class="callout-icon"><i data-lucide="alert-triangle"></i></div>
+                <div>
+                    <h4>Mission Reality Check: Your True Timeline</h4>
+                    <p>The "14-Day" title is the framework, not a fantasy. For a man starting from scratch, a realistic timeline to forge these skills is <strong>3 to 4 weeks.</strong> Rushing is failure. Mastery is the objective, not speed.</p>
+                </div>
+            </div>
+            <table class="battle-plan-table">
+                <thead>
+                    <tr>
+                        <th style="width: 10%; text-align: center;">Day</th>
+                        <th>Operation: The System You'll Master</th>
+                        <th style="width: 35%;">Real-Life Outcome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="phase-header"><td colspan="3">PHASE 1: INTERNAL COMMAND (IMMEDIATE ACCESS)</td></tr>
+                    <tr><td class="day-number">1</td><td><strong>Reality Arsenal Audit</strong></td><td>Brutal audit kills delusion</td></tr>
+                    <tr><td class="day-number">2</td><td><strong>Mission Forge & War Plan</strong></td><td>Laser-target your relationship objective</td></tr>
+                    <tr><td class="day-number">3</td><td><strong>Failure Forensics</strong></td><td>Decode past failures into actionable strategy</td></tr>
+                    <tr><td class="day-number">4</td><td><strong>Presence Command</strong>: Owning the First 20 Seconds</td><td>Command the first impression without a word</td></tr>
+                    <tr><td class="day-number">5</td><td><strong>The Authority Stack</strong>: Body & Voice Alignment</td><td>Align body and voice for instant power</td></tr>
+                    <tr><td class="day-number">6</td><td><strong>Social Warm-Up Arsenal</strong></td><td>Nuke approach anxiety with low-risk reps</td></tr>
+                    <tr><td class="day-number">7</td><td><strong>Week-1 Integration & Contract</strong></td><td>Seal foundations, prepare for deployment</td></tr>
+                    <tr class="phase-header"><td colspan="3">PHASE 2: FIELD EXECUTION (UNLOCKS AFTER 7 DAYS)</td></tr>
+                    <tr><td class="day-number">8</td><td><strong>The OCQ Engine</strong>: Never Run Out of Things to Say</td><td>Loop ends dead air forever</td></tr>
+                    <tr><td class="day-number">9</td><td><strong>The SPEC System</strong>: Get a "Yes," Not a "Maybe"</td><td>Secure clear plans that command respect</td></tr>
+                    <tr><td class="day-number">10</td><td><strong>Heat Reading Manual</strong></td><td>Read interest, escalate with certainty</td></tr>
+                    <tr><td class="day-number">11</td><td><strong>Digital Combat Manual</strong></td><td>Text without murdering chemistry</td></tr>
+                    <tr><td class="day-number">12</td><td><strong>Group Dynamics Warfare</strong></td><td>Disarm crowds, isolate and engage your target</td></tr>
+                    <tr><td class="day-number">13</td><td><strong>Full-Spectrum Combat Mission</strong></td><td>24-hour live-fire proof of your skills</td></tr>
+                    <tr><td class="day-number">14</td><td><strong>Protocol Debrief & Activation</strong></td><td>Lock in metrics & <strong>activate your 30-Day Roadmap</strong></td></tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Each day delivers focused video lessons, clear objectives, and a downloadable PDF “Combat Workbook” for offline execution.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <!-- SECTION: HOW IT WORKS -->
+        <section class="section section-divider container">
+            <h2>From Blueprint to Battlefield</h2>
+            <p class="lead center-text">The 14-Day Forge gives you the complete blueprint. Here’s how you turn it into real-world skill.</p>
+            
+            <div class="grid-2-col">
+                <div>
+                    <h3>1. Strategic Phased Deployment</h3>
+                    <p>Phase 2 unlocks after seven days. Why? Trying to use advanced tactics without the internal foundation of Phase 1 is like firing a cannon from a canoe. It ends badly. This mandated focus ensures you don't just <em>learn</em> it; you <em>become</em> it.</p>
+                </div>
+                <div>
+                    <h3>2. The Beginning, Not The End</h3>
+                    <p>The 14 modules are your boot camp. On Day 14, you receive your <strong>30-Day Evolution Plan.</strong> This is your ongoing mission brief, designed to forge your new systems into unconscious, automatic skill. This is the bridge from learning to <em>being</em>.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 48px;">
+                <h4 style="text-align: center; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">Your Forge Arsenal Includes:</h4>
+                <ul class="checklist" style="max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <li><i data-lucide="captions" class="icon"></i> <span>Lifetime access to all on-demand video lessons with full captions, streamable on any device.</span></li>
+                    <li><i data-lucide="file-text" class="icon"></i> <span>A downloadable “Combat Workbook” for every module to execute your missions offline.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION: OBJECTIONS ADDRESSED -->
+        <section class="section section-divider container">
+            <h2 class="center-text">Objections Addressed</h2>
+            <p class="lead center-text">Common concerns—resolved before they become barriers.</p>
+            <div class="objection-grid">
+                <div class="objection-card">
+                    <h4><i data-lucide="heart-off"></i>Is this another "TikTok dating guru" course?</h4>
+                    <p>Absolutely not. We operate on a core principle: <strong>Respect is Mandatory.</strong> We teach systems for confidence, not scripts for coercion. This is about self-command and authentic connection.</p>
+                </div>
+                <div class="objection-card">
+                    <h4><i data-lucide="clock"></i>What if I'm too busy?</h4>
+                    <p>The daily modules are a focused 15-20 minutes. You have lifetime access to go at your own pace. Speed is not the objective; genuine mastery is.</p>
+                </div>
+                <div class="objection-card">
+                    <h4><i data-lucide="book-open-check"></i>I've tried programs before.</h4>
+                    <p>Unlike theory-heavy courses, this is an executable operating system with measurable results you track in your workbook from Day 1. No fluff, just the formula.</p>
+                </div>
+                <div class="objection-card">
+                    <h4><i data-lucide="shield-question"></i>What's the catch with the guarantee?</h4>
+                    <p>No catch. The only requirement is that you do the work. We can track progress and are confident in the system. This guarantee holds us accountable to your results.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: THE BOTGOSPEL CODE -->
+        <section class="section section-divider container">
+            <h2 class="center-text">The BOTGospel Code</h2>
+            <p class="lead center-text">These four principles are the foundation of our entire system. They are non-negotiable.</p>
+            <ol style="max-width: 500px; margin: 32px auto 0; font-size: 1.1rem; list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 12px; text-align: center;"><span class="text-accent">01.</span> Systems Over Superstition</li>
+                <li style="margin-bottom: 12px; text-align: center;"><span class="text-accent">02.</span> Brutal Honesty Builds</li>
+                <li style="margin-bottom: 12px; text-align: center;"><span class="text-accent">03.</span> Action Annihilates Anxiety</li>
+                <li style="text-align: center;"><span class="text-accent">04.</span> Respect Is Mandatory</li>
+            </ol>
+        </section>
+
+        <!-- SECTION: PRICING & GUARANTEE -->
+        <section class="section container" id="checkout">
+            <div class="price-section">
+                <h2>Your Investment & <span class="text-accent">Ironclad Guarantee</span></h2>
+                
+                <div class="price-tag">$47</div>
+                
+                <div class="guarantee-badge">
+                    <i data-lucide="badge-check"></i>
+                    ZERO-RISK GUARANTEE
+                </div>
+                
+                <p class="lead" style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-secondary);">
+                    Complete every mission. If you don’t see a measurable lift in confidence, conversation skill, or social command, we refund 100% — no questions, no hassle.
+                </p>
+                
+                <!-- ====================================================================== -->
+                <!-- FINAL CHECKOUT BUTTON - UPDATED FOR PAYHIP CHECKOUT -->
+                <!-- ====================================================================== -->
+                <a href="https://payhip.com/b/UOZYP" class="btn payhip-buy-button" data-theme="none" data-product="UOZYP">
+                    <i data-lucide="rocket"></i>
+                    COMMAND YOUR ACCESS
+                </a>
+                <!-- ====================================================================== -->
+                
+                <p style="font-size: 1.1rem; font-weight: 700; margin-top: 2rem; color: var(--text-primary); line-height: 1.5; margin-bottom: 1rem;">
+                    Which man will you be?<br>
+                    <span style="color: var(--text-secondary);">The one who makes excuses</span> or 
+                    <span class="text-accent">the one who makes moves?</span>
+                </p>
+
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0;">Secure checkout • Immediate access</p>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // Create Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
+                
+                const icon = menuToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.setAttribute('data-lucide', 'x');
+                } else {
+                    icon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons(); // Re-render icons after changing the attribute
+            });
+        }
+    </script>
+</body>
+</html>

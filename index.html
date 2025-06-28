@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTGospel | End Loneliness. Reclaim Power.</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons & Chart.js Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* ==========================================================================
+           BOTGospel Landing Page Stylesheet - V6.0 (Logo Integration)
+           ========================================================================== */
+
+        /* 1. CORE FOUNDATION & VARIABLES */
+        :root {
+            --background-primary: #100C08;
+            --background-surface: #1A1411;
+            --border-subtle: rgba(219, 224, 225, 0.1);
+            --text-primary: #F3F4F5;
+            --text-secondary: #A8B0B1;
+            --text-on-accent: #100C08;
+            --accent-action: #FF9408;
+            --progress-start: #CA3F16;
+        }
+
+        /* 2. GENERAL BODY & LAYOUT */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--background-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        
+        /* 3. TYPOGRAPHY & HEADINGS */
+        h1, h2, h3, h4 { font-weight: 900; line-height: 1.2; color: var(--text-primary); text-wrap: balance; }
+        h1 { font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem); }
+        h2 { font-size: clamp(2rem, 4vw + 1rem, 3rem); }
+        h3 { font-size: clamp(1.5rem, 2vw + 1rem, 2rem); }
+        p { margin-bottom: 1.5em; max-width: 65ch; }
+        p.lead { font-size: 1.25rem; color: var(--text-secondary); }
+        .text-accent { color: var(--accent-action); }
+
+        /* 4. NAVIGATION */
+        .main-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(16, 12, 8, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 16px 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 200ms ease;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-action);
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* 5. COMPONENTS & SECTIONS */
+        .section { padding: 80px 0; }
+        .section-divider { border-top: 1px solid var(--border-subtle); }
+        .hero { padding: 120px 0 80px 0; text-align: center; }
+        .hero h1 { letter-spacing: -0.03em; }
+        .hero p { margin-left: auto; margin-right: auto; }
+        .btn { display: inline-block; background-color: var(--accent-action); color: var(--text-on-accent); padding: 16px 32px; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 200ms ease-out, box-shadow 200ms ease-out; box-shadow: 0 4px 15px -5px transparent; }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 8px 25px -10px var(--accent-action); }
+        .btn:active { transform: scale(0.98); }
+        .grid-container { display: grid; gap: 24px; margin-top: 48px; }
+        
+        /* FIXED: Split layout grid with proper responsive behavior */
+        .split-layout-grid { 
+            display: grid; 
+            gap: 48px; 
+            align-items: center;
+            grid-template-columns: 1fr;
+            width: 100%;
+        }
+        
+        /* FIXED: Split text and visual containers */
+        .split-text {
+            width: 100%;
+            overflow-wrap: break-word;
+        }
+        .split-text p { 
+            max-width: 55ch; 
+            width: 100%;
+            margin-left: 0;
+        }
+        .split-visual {
+            width: 100%;
+            max-width: 100%;
+        }
+        .split-visual img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .stat-card { background-color: var(--background-surface); padding: 24px; border-radius: 8px; border: 1px solid var(--border-subtle); text-align: center; }
+        .stat-card p:first-child { font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 900; line-height: 1.1; color: var(--progress-start); margin-bottom: 0; }
+        .stat-card p:last-child { color: var(--text-secondary); margin-top: 8px; margin-bottom: 0; font-size: 0.9rem; max-width: none; }
+        .card { background-color: var(--background-surface); padding: 24px; border-radius: 8px; border: 1px solid var(--border-subtle); }
+        .card-pillar { text-align: center; transition: transform 300ms ease-out; }
+        .card-pillar:hover { transform: scale(1.05); }
+        .card-pillar .icon { margin: 0 auto 16px auto; color: var(--accent-action); }
+        .card-pillar h4 { margin-top: 0; }
+        .comparison-card { background-color: var(--background-surface); padding: 32px; border-radius: 8px; border: 2px dashed var(--border-subtle); }
+        .comparison-card h3 { color: var(--text-primary); display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .comparison-card h3 i { color: var(--progress-start); }
+        .comparison-card h3 span { color: var(--progress-start); font-size: 1.75rem; font-weight: 900; line-height: 1; }
+        .comparison-card p { color: var(--text-secondary); margin-bottom: 24px; }
+        .comparison-card ul { list-style: none; }
+        .comparison-card li { position: relative; padding-left: 24px; margin-bottom: 12px; color: var(--text-primary); }
+        .comparison-card li::before { content: '»'; position: absolute; left: 0; top: 0; color: var(--progress-start); font-weight: 900; }
+        .final-cta { background-color: var(--background-surface); text-align: center; border-radius: 12px; padding: 64px 32px; }
+        .chart-container { position: relative; width: 100%; max-width: 450px; margin: 48px auto 0 auto; height: 300px; }
+
+        /* 6. FOOTER */
+        footer { padding: 48px 0; text-align: center; color: var(--text-secondary); }
+        footer p { font-size: 0.9rem; max-width: none; }
+        footer .logo-text { font-weight: 900; font-size: 1.5rem; color: var(--text-primary); letter-spacing: 0.1em; margin-bottom: 8px; }
+
+        /* 7. RESPONSIVE & MEDIA QUERIES */
+        @media (min-width: 768px) {
+            .grid-2 { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+            .grid-4 { grid-template-columns: repeat(4, 1fr); }
+            .split-layout-grid { grid-template-columns: 1fr 1fr; }
+            .chart-container { height: 350px; }
+        }
+        @media (max-width: 767px) {
+            body.nav-open { overflow: hidden; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 73px;
+                left: 0;
+                right: 0;
+                background-color: var(--background-surface);
+                flex-direction: column;
+                padding: 32px;
+                text-align: center;
+                gap: 32px;
+                height: calc(100vh - 73px);
+                border-top: 1px solid var(--border-subtle);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1.5rem; }
+            
+            /* FIXED: Mobile-specific adjustments */
+            .split-layout-grid {
+                gap: 32px;
+            }
+            .split-text p {
+                max-width: 100%;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.svg" alt="BOTGospel Logo" class="logo-image">
+            </a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="ironclad.html">The Course</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+                <i data-lucide="menu" width="32" height="32"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>END LONELINESS. <span class="text-accent">RECLAIM POWER.</span></h1>
+            <p class="lead" style="margin-top: 16px;">The rebellion begins here.</p>
+            <p style="margin-top: 32px;">You're drowning in engineered isolation while Big Tech profits from your stagnation. Dating apps designed to keep you swiping. "Just be confident" bullshit that changes nothing. Manosphere poison that turns you bitter instead of better.</p>
+            <p class="lead" style="font-weight: 700; color: var(--text-primary); margin-top: 1em; margin-bottom: 2em;">This ends now.</p>
+            <a href="ironclad.html" class="btn">SEE THE BATTLE PLAN</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section section-divider container">
+            <div style="text-align: center;">
+                <h2>The War You Didn't Start (But Are Losing)</h2>
+                <p class="lead" style="margin-left: auto; margin-right: auto;">This is engineered loneliness. You're the product being sold.</p>
+            </div>
+            <div class="split-layout-grid" style="margin-top: 48px;">
+                <div class="split-visual">
+                    <img src="images/engineered-loneliness.jpg" 
+                         alt="Man isolated by the cold glow of a smartphone dating app" 
+                         style="width: 100%; border-radius: 8px; filter: grayscale(80%) contrast(120%); opacity: 0.8;">
+                </div>
+                <div class="split-text">
+                    <p>You swipe through hundreds of profiles. Match with three. Two ghost. The third gives dead-air responses until she vanishes. You see her at the coffee shop. Heart races. You rehearse the approach. Then freeze. Walk past. Replay the failure on the drive home.</p>
+                    <p>When you do approach, you apologize for existing. "Sorry to bother you, but..." You hand her all the power before you even speak. She smells the desperation. Makes an excuse. Gone.</p>
+                    <p style="margin-bottom: 0;">You're not broken. <strong>You're trapped in a system designed to keep you isolated.</strong> Lonely men are profitable men. Dating apps make billions keeping you single. YouTube gurus sell confidence but never show the math.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-divider container">
+            <div style="text-align: center;">
+                <h2 class="text-accent" style="text-transform: uppercase; letter-spacing: 0.05em;">The Rebellion</h2>
+                <p class="lead" style="margin-left: auto; margin-right: auto;">A generation armed with every advantage is romantically incompetent. This is the loneliness pandemic.</p>
+            </div>
+            <div class="grid-container grid-3">
+                <div class="stat-card">
+                    <p>48%</p>
+                    <p>Of young men report feeling lonely "frequently" or "always."</p>
+                </div>
+                <div class="stat-card">
+                    <p>6 in 10</p>
+                    <p>Young men are single, double the rate of young women.</p>
+                </div>
+                <div class="stat-card">
+                    <p>-70%</p>
+                    <p>Decline in male-reported sexual partners by age 30 since 2000s.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 24px; font-size: 0.8rem; color: rgba(168, 176, 177, 0.5); margin-bottom: 0;">Data synthesized from market research on social trends & relationships.</p>
+        </section>
+
+        <section class="section section-divider container">
+            <div style="text-align: center;">
+                <h2>You've Been Fed Two Toxic Lies</h2>
+                <p class="lead" style="margin-left: auto; margin-right: auto;">The modern dating market is a minefield of bad advice, pushing men to two failed extremes. We reject both.</p>
+            </div>
+            <div class="grid-container grid-2">
+                <div class="comparison-card">
+                    <h3><i data-lucide="zap" width="28" height="28"></i> The Manipulators</h3>
+                    <p>The "red pill" and PUA communities that treat connection as a game won through psychological tricks.</p>
+                    <ul>
+                        <li>Canned pick-up lines & routines</li>
+                        <li>Faking dominance & "alpha" status</li>
+                        <li>Treating women as puzzles or conquests</li>
+                        <li>Result: Brittle confidence, empty interactions</li>
+                    </ul>
+                </div>
+                <div class="comparison-card">
+                    <h3><i data-lucide="frown" width="28" height="28"></i> The Nihilists</h3>
+                    <p>Mainstream self-help and defeatist forums that offer vague platitudes or glorify despair.</p>
+                    <ul>
+                        <li>"Just be yourself" (without a strong self)</li>
+                        <li>Vague positivity & "good vibes"</li>
+                        <li>Surrendering to loneliness as "normal"</li>
+                        <li>Result: Inaction, frustration, and resentment</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-divider container">
+            <div style="text-align: center;">
+                <h2>This Isn't Self-Help. It's Systematic Reconstruction.</h2>
+                <p class="lead" style="margin-left: auto; margin-right: auto;">We don't patch cracks; we rebuild you from the foundation up on four pillars of masculine competence.</p>
+            </div>
+            <div class="grid-container grid-4">
+                <div class="card card-pillar">
+                    <i data-lucide="flame" class="icon" width="48" height="48"></i>
+                    <h4>Sexual Abundance</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">Achieved not by gimmicks, but by radiating genuine confidence and creating authentic chemistry.</p>
+                </div>
+                <div class="card card-pillar">
+                    <i data-lucide="heart-handshake" class="icon" width="48" height="48"></i>
+                    <h4>Real Relationships</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">The emotional maturity to navigate love, conflict, and deep partnership effectively.</p>
+                </div>
+                <div class="card card-pillar">
+                    <i data-lucide="anchor" class="icon" width="48" height="48"></i>
+                    <h4>Family-Ready Strength</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">The grounded, self-aware resilience required to be a pillar for a family and community.</p>
+                </div>
+                <div class="card card-pillar">
+                    <i data-lucide="crown" class="icon" width="48" height="48"></i>
+                    <h4>Leadership Presence</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">The quiet authority that comes from competence, not force. Becoming a man others choose to follow.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-divider container">
+            <div class="final-cta">
+                <h2>YOUR FIRST CAMPAIGN: <span class="text-accent">FORGE YOUR REALITY.</span></h2>
+                <p class="lead" style="margin-left: auto; margin-right: auto;">Theory is useless without action. Your reconstruction begins with a definitive first step.</p>
+                <div style="margin: 48px 0 64px 0;">
+                    <h3 style="color: var(--text-primary); letter-spacing: 0.05em;">INTRODUCING: IRONCLAD COMMAND</h3>
+                    <p style="font-size: 1.5rem; color: var(--accent-action); font-weight: 700; margin-top: 8px; max-width: none;">The 14-Day Reality Forge</p>
+                    <p style="max-width: 60ch; margin-left: auto; margin-right: auto; margin-top: 16px;">This isn't a course. It's a 14-day intensive designed to strip away the bullshit, install a new operating system for social interaction, and give you the tactical weapons to command respect, ignite attraction, and build the connections you deserve.</p>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.5rem;">Your Skill Transformation</h4>
+                    <p style="color: var(--text-secondary); max-width: 60ch; margin: 1rem auto 0 auto;">Ironclad Command is designed to shift your development from consuming passive advice to building a portfolio of high-impact, real-world skills.</p>
+                    <div class="chart-container">
+                        <canvas id="skillDonutChart"></canvas>
+                    </div>
+                </div>
+                <a href="ironclad.html" class="btn" style="padding: 20px 40px; font-size: 1.25rem; margin-top: 48px;">
+                    FORGE SOCIAL DOMINANCE IN 14 DAYS
+                </a>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 16px; margin-bottom: 0;">Stop "hoping you don't screw this up." Start executing with precision.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section-divider">
+        <div class="container">
+            <p class="logo-text">BOTGOSPEL</p>
+            <p>The loneliness pandemic wasn't an accident. Your liberation won't be either.</p>
+            <p style="margin-top: 8px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-primary);">REBEL. SYSTEMISE. PROVE.</p>
+            <p style="font-size: 0.8rem; margin-top: 32px;">© 2024 BOTGospel. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lucide Icons initialization
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
+                
+                const icon = menuToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.setAttribute('data-lucide', 'x');
+                } else {
+                    icon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons();
+            });
+        }
+
+        // Chart.js script for the donut chart
+        document.addEventListener('DOMContentLoaded', function () {
+            const donutCtx = document.getElementById('skillDonutChart');
+            if(donutCtx) {
+                const brandColors = {
+                    action: 'rgba(255, 148, 8, 1)',
+                    textSecondary: 'rgba(168, 176, 177, 1)'
+                };
+
+                new Chart(donutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Confident Mindset', 'Approach Mechanics', 'Conversation Flow', 'Emotional Intelligence'],
+                        datasets: [{
+                            label: 'Skill Portfolio',
+                            data: [30, 25, 25, 20],
+                            backgroundColor: [
+                                'rgba(255, 148, 8, 0.9)', 'rgba(255, 148, 8, 0.7)',
+                                'rgba(255, 148, 8, 0.5)', 'rgba(255, 148, 8, 0.3)'
+                            ],
+                            borderColor: [brandColors.action],
+                            borderWidth: 1,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: brandColors.textSecondary, padding: 20 } },
+                            tooltip: { callbacks: { title: (items) => items[0].label } }
+                        },
+                        cutout: '60%'
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

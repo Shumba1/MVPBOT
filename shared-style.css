@@ -135,3 +135,131 @@ td input, td select { margin: 0; } /* Remove bottom margin inside tables */
 .mt-2 { margin-top: 0.5rem !important; }
 .mt-4 { margin-top: 1.5rem !important; }
 .ml-2 { margin-left: 0.5rem !important; }
+
+/* ==========================================================================
+   COMMAND BAR & NAVIGATION (v4.4)
+   ========================================================================== */
+.command-bar {
+  background-color: var(--background-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.command-bar-title h3 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin: 0;
+}
+.command-bar-title span {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.battle-plan-menu {
+  position: relative;
+}
+.battle-plan-dropdown {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background-color: var(--background-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  width: 300px;
+  padding: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.battle-plan-dropdown.active {
+  display: block;
+}
+.battle-plan-dropdown h6 {
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+.battle-plan-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.battle-plan-dropdown ul a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 5px;
+  font-size: 0.95rem;
+}
+.battle-plan-dropdown ul a.active {
+  background-color: var(--accent-action);
+  color: var(--text-on-accent);
+}
+.dropdown-locked {
+  padding: 12px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+.dropdown-locked i {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.mission-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  max-width: 65ch; /* Align with main content */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* MOBILE-FIRST REFINEMENTS */
+@media (max-width: 600px) {
+  .command-bar {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start; /* Align to the left */
+    gap: 12px; /* Add space between title and button */
+  }
+
+  .battle-plan-menu {
+    width: 100%; /* Make the button container full-width */
+  }
+
+  .battle-plan-menu .btn-secondary {
+    width: 100%; /* Make the button itself full-width */
+    justify-content: center; /* Center the text/icon in the button */
+  }
+
+  .battle-plan-dropdown {
+    /* Make the dropdown span the screen width with padding */
+    left: 16px;
+    right: 16px;
+    width: auto;
+  }
+  
+  .mission-footer {
+    flex-direction: column-reverse; /* Puts "Next" button on top */
+    gap: 16px;
+    align-items: stretch; /* Make both buttons full width */
+  }
+  
+  .mission-footer a {
+    width: 100%;
+    justify-content: center;
+  }
+}
