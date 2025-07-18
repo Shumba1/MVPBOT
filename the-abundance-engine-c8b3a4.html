@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>The Abundance Engine – Ironclad Foundation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <style>
+        :root {
+            --color-bg: #100C08;
+            --color-text: #F3F4F5;
+            --color-text-muted: #a9afb1;
+            --color-accent: #FF9408;
+            --color-accent-deep: #CA3F16;
+            --color-accent-darkest: #95122C;
+            --font-primary: 'Inter', sans-serif;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: var(--color-bg);
+            font-family: var(--font-primary);
+            color: var(--color-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        .course-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .course-ui-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            gap: 1rem;
+            border-bottom: 1px solid #2a2622;
+            background-color: rgba(16, 12, 8, 0.95);
+            z-index: 10;
+        }
+        
+        .back-to-hub {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .back-to-hub:hover {
+            color: var(--color-accent);
+        }
+        
+        .progress-container {
+            flex-grow: 1;
+            background-color: #2a2622;
+            border-radius: 99px;
+            height: 8px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--color-accent);
+            transition: width 0.4s ease;
+        }
+        
+        .step-counter {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            min-width: 45px;
+            text-align: right;
+        }
+        
+        #course-slider {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+        
+        .splide__track, .splide__list {
+            height: 100% !important;
+        }
+        
+        .splide__slide {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            align-items: center !important;
+            height: 100% !important;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 2rem 1rem 4rem 1rem;
+        }
+        
+        .slide-content {
+            max-width: 650px;
+            width: 100%;
+            color: var(--color-text);
+        }
+        
+        .slide-content.centered {
+            text-align: center;
+            margin: auto 0;
+            flex-shrink: 1;
+        }
+        
+        .logo-brand {
+            width: 140px;
+            height: auto;
+            margin: 0 auto 1.25rem auto;
+            display: block;
+        }
+        
+        .slide-title {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .slide-module-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-muted);
+        }
+        
+        .slide-header {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .slide-subheader {
+            color: var(--color-text);
+            margin-top: 2rem;
+        }
+        
+        .slide-content p, .slide-content li {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        .slide-content ul {
+            padding-left: 20px;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .slide-content ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .slide-content strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+        
+        .slide-content blockquote {
+            border-left: 3px solid var(--color-accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--color-text);
+        }
+        
+        .course-image {
+            margin: 1.5rem 0 2rem 0;
+            width: 100%;
+        }
+        
+        .course-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .course-image figcaption {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 1rem;
+            padding: 0 1rem;
+            line-height: 1.5;
+        }
+        
+        .highlight-quote {
+            background-color: rgba(26, 22, 18, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 3px solid var(--color-accent);
+        }
+        
+        .comparison-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .comparison-card {
+            flex: 1;
+            min-width: 250px;
+            padding: 1.5rem;
+            background: rgba(26, 22, 18, 0.7);
+            border: 1px solid #333;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+        
+        .comparison-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-accent);
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .comparison-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .comparison-card li {
+            font-size: 0.9rem;
+        }
+        
+        .good-example {
+            border-left: 3px solid #2ECC71;
+        }
+        
+        .bad-example {
+            border-left: 3px solid #E74C3C;
+        }
+        
+        .identity-drill {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .trinity-item {
+            background: rgba(26, 22, 18, 0.7);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .trinity-item:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+        
+        .trinity-item label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .drill-example {
+            background: rgba(255, 148, 8, 0.05);
+            border: 1px dashed var(--color-accent);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .drill-example h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .drill-example p {
+            margin-bottom: 0;
+        }
+        
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(26, 22, 18, 0.7);
+            border: 1px solid #333;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .flow-step:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--color-accent);
+            color: var(--color-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .day-tracker {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+        
+        .week-heading {
+            margin: 2rem 0 0.75rem 0;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--color-accent);
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+        }
+        
+        .day-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(26, 22, 18, 0.7);
+            border: 1px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .day-item:hover {
+            border-color: var(--color-accent);
+        }
+        
+        .day-number {
+            font-weight: 700;
+            color: var(--color-text);
+            min-width: 50px;
+        }
+        
+        .day-status {
+            flex-grow: 1;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .day-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--color-text-muted);
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .day-item.completed {
+            background: rgba(255, 148, 8, 0.1);
+            border-color: var(--color-accent);
+        }
+        
+        .day-item.completed .day-status {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+        
+        .day-item.completed .day-checkbox {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+        
+        .completion-icon {
+            width: 14px;
+            height: 14px;
+            stroke: var(--color-bg);
+            stroke-width: 3px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .day-item.completed .completion-icon {
+            opacity: 1;
+        }
+        
+        .completion-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 148, 8, 0.1);
+            border: 2px dashed var(--color-accent);
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .completion-message.show {
+            display: block;
+        }
+        
+        .completion-message h3 {
+            color: var(--color-accent);
+            margin: 0 0 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .completion-message p {
+            color: var(--color-text);
+            margin: 0;
+        }
+        
+        .course-ui-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-top: 1px solid #2a2622;
+            background-color: rgba(16, 12, 8, 0.95);
+            z-index: 10;
+        }
+        
+        .slide-nav-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: var(--color-text-muted);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .slide-nav-btn:hover:not(:disabled) {
+            border-color: var(--color-accent);
+            color: var(--color-text);
+        }
+        
+        .slide-nav-btn.cta {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            border-color: var(--color-accent);
+        }
+        
+        .slide-nav-btn.cta:hover:not(:disabled) {
+            background-color: var(--color-accent-deep);
+            transform: scale(1.03);
+        }
+        
+        .slide-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .splide__slide::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .splide__slide::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .splide__slide::-webkit-scrollbar-thumb {
+            background-color: #444;
+            border-radius: 20px;
+            border: 1px solid var(--color-bg);
+        }
+        
+        .splide__slide::-webkit-scrollbar-thumb:hover {
+            background-color: var(--color-accent);
+        }
+        
+        @media (max-width: 600px) {
+            .slide-title {
+                font-size: 2rem;
+            }
+            
+            .slide-header {
+                font-size: 1.5rem;
+            }
+            
+            .slide-content p, .slide-content li {
+                font-size: 1rem;
+            }
+            
+            .slide-nav-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .splide__slide {
+                padding: 1.5rem 1rem 3rem 1rem;
+            }
+            
+            .comparison-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body class="course-body">
+    <div class="course-container">
+        <header class="course-ui-header">
+            <a href="courses.html" class="back-to-hub" aria-label="Exit to course hub">
+                <i data-lucide="x"></i>
+            </a>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <span class="step-counter" id="stepCounter">1 / 15</span>
+        </header>
+        
+        <div id="course-slider" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <!-- Slide 1: Title -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <img src="images/botgospel-logo.svg" class="logo-brand" alt="BOTGOSPEL logo">
+                            <h1 class="slide-title">THE ABUNDANCE ENGINE</h1>
+                            <p class="slide-subtitle">A 21-Day Program to Rewire Your Brain for Abundance</p>
+                            <span class="slide-module-tag">A PREMIUM IRONCLAD FOUNDATION COURSE</span>
+                        </div>
+                    </li>
+
+                    <!-- Slide 2: Module 1 Title -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <h2 class="slide-header">MODULE 1</h2>
+                            <h1 class="slide-title">The Psychology of Scarcity</h1>
+                            <p class="slide-subtitle">Understanding Your Default Mindset</p>
+                        </div>
+                    </li>
+
+                    <!-- Slide 3: Brain's Survival Mechanism -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">YOUR BRAIN'S SURVIVAL MECHANISM</h2>
+                            <p>Scarcity thinking is a natural survival mechanism. While it protected our ancestors, it now limits our social potential.</p>
+                            <figure class="course-image">
+                                <img loading="lazy" src="images/scarcity-survival-mechanism.png" 
+                                     alt="Historical scarcity mindset illustration">
+                                <figcaption>Your brain is wired to fear loss and overvalue rarity</figcaption>
+                            </figure>
+                            <p>This mindset creates cognitive biases like <strong>Loss Aversion</strong> (fearing rejection more than pursuing reward) and <strong>Fixation</strong> (overvaluing single opportunities).</p>
+                        </div>
+                    </li>
+
+                    <!-- Slide 4: Two Pillars of Abundance -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE TWO PILLARS OF ABUNDANCE</h2>
+                            <p>Genuine abundance requires building two complementary foundations:</p>
+                            <div class="comparison-container">
+                                <div class="comparison-card">
+                                    <h3><i data-lucide="brain"></i> Mindset Foundation</h3>
+                                    <p>Believing opportunities are plentiful before evidence exists</p>
+                                    <ul>
+                                        <li>Rejecting scarcity thinking</li>
+                                        <li>Embracing possibility</li>
+                                        <li>Trusting in future opportunities</li>
+                                    </ul>
+                                </div>
+                                <div class="comparison-card">
+                                    <h3><i data-lucide="activity"></i> Action Foundation</h3>
+                                    <p>Creating real-world evidence through consistent action</p>
+                                    <ul>
+                                        <li>Multiple social connections</li>
+                                        <li>Engaging calendar</li>
+                                        <li>Purpose-driven life</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Slide 5: Self-Assessment -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">SELF-ASSESSMENT: IDENTIFYING SCARCITY TRIGGERS</h2>
+                            <p>Recognize your personal scarcity patterns through honest reflection:</p>
+                            <div class="identity-drill">
+                                <div class="trinity-item">
+                                    <label><i data-lucide="zap"></i> Emotional Response</label>
+                                    <p>How do you feel when matching with someone highly attractive?</p>
+                                </div>
+                                <div class="trinity-item">
+                                    <label><i data-lucide="users"></i> Social Threshold</label>
+                                    <p>How many connections create genuine abundance feeling?</p>
+                                </div>
+                                <div class="trinity-item">
+                                    <label><i data-lucide="shield"></i> Primary Fear</label>
+                                    <p>What's your biggest apprehension about new connections?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Slide 6: Module 2 Title -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <h2 class="slide-header">MODULE 2</h2>
+                            <h1 class="slide-title">The 21-Day Transformation</h1>
+                            <p class="slide-subtitle">Daily Practices for Lasting Change</p>
+                        </div>
+                    </li>
+
+                    <!-- Slide 7: Week 1 -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">WEEK 1: OBSERVATION PHASE</h2>
+                            <h3 class="slide-subheader">Days 1-7: Resetting Your Baseline</h3>
+                            <div class="drill-example">
+                                <h3><i data-lucide="eye"></i> Daily Practice</h3>
+                                <p>Spend 15 minutes in social environments simply observing interactions without pressure to participate.</p>
+                            </div>
+                            <p>This recalibrates your brain from seeing social situations as threatening to recognizing them as normal human engagement.</p>
+                            <figure class="course-image">
+                                <img loading="lazy" src="images/social-observation-cafe.jpg" 
+                                     alt="Calm social observation in a cafe">
+                                <figcaption>Detached observation reduces social anxiety</figcaption>
+                            </figure>
+                        </div>
+                    </li>
+
+                    <!-- Slide 8: Week 2 -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">WEEK 2: CONNECTION PRACTICE</h2>
+                            <h3 class="slide-subheader">Days 8-14: Building Social Confidence</h3>
+                            <p>Initiate one casual conversation daily with zero expectations:</p>
+                            <div class="comparison-container">
+                                <div class="comparison-card good-example">
+                                    <h3><i data-lucide="smile"></i> Effective Approaches</h3>
+                                    <ul>
+                                        <li>Genuine compliments on unique items</li>
+                                        <li>Observations about shared environment</li>
+                                        <li>Open-ended questions about interests</li>
+                                    </ul>
+                                </div>
+                                <div class="comparison-card bad-example">
+                                    <h3><i data-lucide="frown"></i> Approaches to Avoid</h3>
+                                    <ul>
+                                        <li>Overly personal comments</li>
+                                        <li>Backhanded compliments</li>
+                                        <li>Interrupting private conversations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Slide 9: Week 3 -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">WEEK 3: INTENTIONAL EXPANSION</h2>
+                            <h3 class="slide-subheader">Days 15-21: Creating Real Connections</h3>
+                            <p>Transition from practice to authentic connection building:</p>
+                            <div class="flowchart">
+                                <div class="flow-step"><div class="step-number">1</div><div>Reach out to 3 interesting connections</div></div>
+                                <div class="flow-step"><div class="step-number">2</div><div>Follow up with 1 promising conversation</div></div>
+                                <div class="flow-step"><div class="step-number">3</div><div>Attend 1 social event with open mindset</div></div>
+                            </div>
+                            <blockquote class="highlight-quote">"Abundance isn't about numbers - it's about developing the confidence that comes from genuine social engagement"</blockquote>
+                        </div>
+                    </li>
+
+                    <!-- Slide 10: 21-Day Tracker -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">YOUR 21-DAY PRACTICE TRACKER</h2>
+                            <p>Mark your daily progress to build consistency and accountability:</p>
+                            <div class="day-tracker">
+                                <p class="week-heading">Week 1 · Observation (Days 1–7)</p>
+                                <div class="day-item" data-day="1"><div class="day-number">Day 1</div><div class="day-status">15 min observation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="2"><div class="day-number">Day 2</div><div class="day-status">15 min observation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="3"><div class="day-number">Day 3</div><div class="day-status">15 min observation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="4"><div class="day-number">Day 4</div><div class="day-status">15 min observation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="5"><div class="day-number">Day 5</div><div class="day-status">15 min observation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="6"><div class="day-number">Day 6</div><div class="day-status">15 min observation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="7"><div class="day-number">Day 7</div><div class="day-status">15 min observation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+
+                                <p class="week-heading">Week 2 · Connection (Days 8–14)</p>
+                                <div class="day-item" data-day="8"><div class="day-number">Day 8</div><div class="day-status">1 casual conversation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="9"><div class="day-number">Day 9</div><div class="day-status">1 casual conversation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="10"><div class="day-number">Day 10</div><div class="day-status">1 casual conversation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="11"><div class="day-number">Day 11</div><div class="day-status">1 casual conversation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="12"><div class="day-number">Day 12</div><div class="day-status">1 casual conversation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="13"><div class="day-number">Day 13</div><div class="day-status">1 casual conversation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="14"><div class="day-number">Day 14</div><div class="day-status">1 casual conversation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+
+                                <p class="week-heading">Week 3 · Expansion (Days 15–21)</p>
+                                <div class="day-item" data-day="15"><div class="day-number">Day 15</div><div class="day-status">Initiate 3 new connections</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="16"><div class="day-number">Day 16</div><div class="day-status">Follow up promising conversation</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="17"><div class="day-number">Day 17</div><div class="day-status">Continue active conversations</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="18"><div class="day-number">Day 18</div><div class="day-status">Attend social event</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="19"><div class="day-number">Day 19</div><div class="day-status">Maintain multiple connections</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="20"><div class="day-number">Day 20</div><div class="day-status">Reflect and adjust approach</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="21"><div class="day-number">Day 21</div><div class="day-status">Celebrate progress</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                            </div>
+                            <div class="completion-message" id="drill-completion-message">
+                                <h3><i data-lucide="trophy"></i> Transformation Complete!</h3>
+                                <p>You've successfully rewired your brain for abundance. Maintain these practices.</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Slide 11: Module 3 Title -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <h2 class="slide-header">MODULE 3</h2>
+                            <h1 class="slide-title">Sustaining Abundance</h1>
+                            <p class="slide-subtitle">Maintaining Your New Mindset</p>
+                        </div>
+                    </li>
+
+                    <!-- Slide 12: Integrity in Connection -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">INTEGRITY IN CONNECTION</h2>
+                            <p>Abundance brings responsibility. Maintain integrity through:</p>
+                            <div class="comparison-container">
+                                <div class="comparison-card">
+                                    <h3><i data-lucide="message-square"></i> Clear Communication</h3>
+                                    <p>"I'm enjoying getting to know people right now"</p>
+                                </div>
+                                <div class="comparison-card">
+                                    <h3><i data-lucide="heart"></i> Respectful Closure</h3>
+                                    <p>"I've appreciated our time but don't see this continuing"</p>
+                                </div>
+                                <div class="comparison-card">
+                                    <h3><i data-lucide="calendar"></i> Managed Expectations</h3>
+                                    <p>"Here's what I'm available for at this time"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Slide 13: Recognizing Healthy Connections -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">RECOGNIZING HEALTHY CONNECTIONS</h2>
+                            <p>Develop your screening system for quality relationships:</p>
+                            <div class="comparison-container">
+                                <div class="comparison-card good-example">
+                                    <h3><i data-lucide="check-circle"></i> Positive Indicators</h3>
+                                    <ul>
+                                        <li>Consistent communication patterns</li>
+                                        <li>Accountability for actions</li>
+                                        <li>Respect for your boundaries</li>
+                                    </ul>
+                                </div>
+                                <div class="comparison-card bad-example">
+                                    <h3><i data-lucide="x-circle"></i> Concerning Signs</h3>
+                                    <ul>
+                                        <li>Dramatic emotional swings</li>
+                                        <li>Boundary testing behavior</li>
+                                        <li>Victim mentality narratives</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <figure class="course-image">
+                                <img loading="lazy" src="images/healthy-relationship-paths.png" 
+                                     alt="Choosing between healthy and unhealthy relationship paths">
+                                <figcaption>Develop discernment in your connections</figcaption>
+                            </figure>
+                        </div>
+                    </li>
+
+                    <!-- Slide 14: The Abundance Mindset -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE ABUNDANCE MINDSET</h2>
+                            <p>True abundance comes from becoming a complete social ecosystem:</p>
+                            <div class="flowchart">
+                                <div class="flow-step"><div class="step-number">1</div><div>Diverse social connections</div></div>
+                                <div class="flow-step"><div class="step-number">2</div><div>Meaningful personal pursuits</div></div>
+                                <div class="flow-step"><div class="step-number">3</div><div>Continuous self-development</div></div>
+                            </div>
+                            <blockquote class="highlight-quote">"When you become a source of positive energy, you naturally attract quality connections without desperation or force"</blockquote>
+                        </div>
+                    </li>
+
+                    <!-- Slide 15: Completion -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <h2 class="slide-header"><i data-lucide="award"></i> TRANSFORMATION ACHIEVED</h2>
+                            <p>You've installed your abundance mindset. Continue practicing these principles daily to maintain your new reality.</p>
+                            <span class="slide-module-tag">You have completed The Abundance Engine</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="course-ui-footer">
+            <button id="prev-slide" class="slide-nav-btn" aria-label="Previous slide">
+                <i data-lucide="arrow-left"></i> Prev
+            </button>
+            <button id="next-slide" class="slide-nav-btn cta" aria-label="Next slide">
+                Next <i data-lucide="arrow-right"></i>
+            </button>
+        </footer>
+    </div>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/lucide.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- Splide Carousel -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Splide carousel
+            const splide = new Splide('#course-slider', {
+                type: 'slide',
+                pagination: false,
+                arrows: false,
+                drag: true,
+                keyboard: 'global',
+                easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+                speed: 600,
+            }).mount();
+            
+            // Set unique localStorage key for this course
+            window.localStorageKey = 'abundanceEngineDrillProgress';
+            
+            // UI Elements
+            const progressBar = document.getElementById('progressBar');
+            const stepCounter = document.getElementById('stepCounter');
+            const prevButton = document.getElementById('prev-slide');
+            const nextButton = document.getElementById('next-slide');
+            const slides = document.querySelectorAll('.splide__slide');
+            const totalSlides = slides.length;
+            
+            // Update UI on slide change
+            const updateUI = () => {
+                const currentIndex = splide.index;
+                const progress = ((currentIndex + 1) / totalSlides) * 100;
+                progressBar.style.width = `${progress}%`;
+                stepCounter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+                prevButton.disabled = currentIndex === 0;
+                
+                if (currentIndex === totalSlides - 1) {
+                    nextButton.innerHTML = 'Finish Course <i data-lucide="check-circle"></i>';
+                } else {
+                    nextButton.innerHTML = 'Next <i data-lucide="arrow-right"></i>';
+                }
+                lucide.createIcons();
+            };
+            
+            // Navigation events
+            splide.on('moved', updateUI);
+            prevButton.addEventListener('click', () => splide.go('<'));
+            nextButton.addEventListener('click', () => {
+                if (splide.index === totalSlides - 1) {
+                    window.location.href = 'courses.html';
+                } else {
+                    splide.go('>');
+                }
+            });
+            
+            // Drill tracking functionality
+            const dayTracker = document.querySelector('.day-tracker');
+            const completionMessage = document.getElementById('drill-completion-message');
+            
+            // Load saved progress
+            const loadDrillProgress = () => {
+                if (!dayTracker || !window.localStorageKey) return;
+                const savedProgress = JSON.parse(localStorage.getItem(window.localStorageKey)) || [];
+                savedProgress.forEach(dayNumber => {
+                    const dayItem = dayTracker.querySelector(`.day-item[data-day="${dayNumber}"]`);
+                    if (dayItem) dayItem.classList.add('completed');
+                });
+                checkDrillCompletion();
+            };
+            
+            // Save progress
+            const saveDrillProgress = () => {
+                if (!dayTracker) return;
+                const completedDays = [];
+                dayTracker.querySelectorAll('.day-item.completed').forEach(item => {
+                    completedDays.push(item.dataset.day);
+                });
+                localStorage.setItem(window.localStorageKey, JSON.stringify(completedDays));
+            };
+            
+            // Check if all days are completed
+            const checkDrillCompletion = () => {
+                if (!dayTracker || !completionMessage) return;
+                const totalDays = dayTracker.querySelectorAll('.day-item').length;
+                const completedDays = dayTracker.querySelectorAll('.day-item.completed').length;
+                
+                if (totalDays > 0 && totalDays === completedDays) {
+                    completionMessage.classList.add('show');
+                } else {
+                    completionMessage.classList.remove('show');
+                }
+            };
+            
+            // Toggle day completion
+            if (dayTracker) {
+                dayTracker.addEventListener('click', e => {
+                    const item = e.target.closest('.day-item');
+                    if (item) {
+                        item.classList.toggle('completed');
+                        saveDrillProgress();
+                        checkDrillCompletion();
+                    }
+                });
+                loadDrillProgress();
+            }
+            
+            // Initialize UI
+            updateUI();
+        });
+    </script>
+</body>
+</html>

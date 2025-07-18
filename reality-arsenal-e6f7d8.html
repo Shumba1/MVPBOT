@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Reality Arsenal - Ironclad Foundation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="stylesheet" href="shared/style.css">
+    <style>
+        .trinity-item {
+            background: #1a1612;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .trinity-item label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 0.75rem;
+        }
+        .trinity-item textarea {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: var(--color-text);
+            min-height: 100px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body class="course-body">
+    <div class="course-container">
+        <header class="course-ui-header">
+            <!-- FIXED: Corrected exit link -->
+            <a href="courses.html" class="back-to-hub" aria-label="Exit to course hub"><i data-lucide="x"></i></a>
+            <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+            <span class="step-counter" id="stepCounter">1 / 7</span>
+        </header>
+        <div id="course-slider" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <!-- Slide 1: Title -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <!-- ADDED: Brand logo for consistency -->
+                            <img src="shared/botgospel-logo.svg" class="logo-brand" alt="BOTGOSPEL logo">
+                            <h1 class="slide-title">REALITY ARSENAL</h1>
+                            <p class="slide-subtitle">Kill Delusion and Forge a Laser-Targeted Mission</p>
+                            <span class="slide-module-tag">An IRONCLAD FOUNDATION Module</span>
+                        </div>
+                    </li>
+                    <!-- Slide 2: Promise -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">PROMISE</h2>
+                            <p>You will conduct a brutally honest self-assessment, destroying self-delusion. From this clarity, you'll forge a crystal-clear mission governing every dating decision.</p>
+                            
+                            <!-- UPDATED: Relevant image with new local path -->
+                            <figure class="course-image">
+                                <img loading="lazy" src="images/reality-arsenal-audit.jpg" alt="Man conducting a ruthless self-assessment in a dark, focused environment.">
+                                <figcaption>Conducting the Arsenal Audit.</figcaption>
+                            </figure>
+                        </div>
+                    </li>
+                    <!-- Slide 3: The Flaw -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE FLAW: THE HOPEFUL WANDERER</h2>
+                            <p>Most men drift with vague desires but no strategy. This lack of clarity leads to scattered results and wasted time.</p>
+                            
+                            <blockquote>"The loneliness epidemic didn't happen by accident. But change starts with one man who rejects 'normal'."</blockquote>
+                            
+                            <!-- UPDATED: Relevant image with new local path -->
+                            <figure class="course-image">
+                                <img loading="lazy" src="images/hopeful-wanderer-flaw.jpg" alt="A man looking lost and directionless in a chaotic city at night.">
+                                <figcaption>The aimless state we're eliminating.</figcaption>
+                            </figure>
+                        </div>
+                    </li>
+                    <!-- Slide 4: The Doctrine -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE DOCTRINE: BRUTAL HONESTY BUILDS</h2>
+                            <p>You can't improve what you won't acknowledge. Self-honesty about your strengths and weaknesses creates an unshakeable foundation.</p>
+                            <h3 class="slide-subheader">Core Principles</h3>
+                            <ul>
+                                <li><strong>Data Over Delusion:</strong> Facts are your allies</li>
+                                <li><strong>Ambiguity Bleeds Energy:</strong> Clarity accelerates decisions</li>
+                                <li><strong>Commitment Over Convenience:</strong> Focus wins battles</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Slide 5: The Protocol Part 1 -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">PROTOCOL: THE ARSENAL AUDIT</h2>
+                            <p>This is data gathering, not therapy. Be brutally honest.</p>
+                            
+                            <div class="trinity-item">
+                                <label for="physical-arsenal"><i data-lucide="dumbbell"></i> Physical Weapons</label>
+                                <textarea id="physical-arsenal" placeholder="3 genuine physical strengths you already possess (e.g., athletic build, sharp style, confident posture)"></textarea>
+                            </div>
+                            
+                            <div class="trinity-item">
+                                <label for="mental-edge"><i data-lucide="brain"></i> Mental Edge</label>
+                                <textarea id="mental-edge" placeholder="Personality traits strangers compliment (e.g., dry wit, calm presence, decisive thinking)"></textarea>
+                            </div>
+                            
+                            <div class="trinity-item">
+                                <label for="weak-links"><i data-lucide="alert-triangle"></i> Weak Links</label>
+                                <textarea id="weak-links" placeholder="2 saboteurs bleeding your power (e.g., nervous habits, poor eye contact)"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Slide 6: The Protocol Part 2 -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">PROTOCOL: MISSION FORGE</h2>
+                            <p>With your audit complete, build your mission.</p>
+                            
+                            <div class="trinity-item">
+                                <label for="battle-selection"><i data-lucide="crosshair"></i> Your Battle</label>
+                                <textarea id="battle-selection" placeholder="State your primary objective without apology (e.g., committed relationship, casual dating)"></textarea>
+                            </div>
+                            
+                            <div class="trinity-item">
+                                <label for="target-profile"><i data-lucide="user"></i> Your Target</label>
+                                <textarea id="target-profile" placeholder="Describe who deserves your effort (beyond superficial traits)"></textarea>
+                            </div>
+                            
+                            <div class="trinity-item">
+                                <label for="battle-lines"><i data-lucide="shield"></i> Your Boundaries</label>
+                                <textarea id="battle-lines" placeholder="Non-negotiable deal-breakers and areas of flexibility"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Slide 7: The Drill -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE DRILL: 7-DAY MISSION LOCK-IN</h2>
+                            <p>Harden intention into identity through daily reinforcement.</p>
+                            <div class="day-tracker">
+                                <div class="day-item" data-day="1"><div class="day-number">Day 1</div><div class="day-status">Write full Arsenal Audit</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="2"><div class="day-number">Day 2</div><div class="day-status">Write full Mission Forge</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="3"><div class="day-number">Day 3</div><div class="day-status">Read both documents aloud</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="4"><div class="day-number">Day 4</div><div class="day-status">Read both documents aloud</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="5"><div class="day-number">Day 5</div><div class="day-status">Read both documents aloud</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="6"><div class="day-number">Day 6</div><div class="day-status">Read both documents aloud</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                                <div class="day-item" data-day="7"><div class="day-number">Day 7</div><div class="day-status">Write how they clarify your actions</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                            </div>
+                            <div class="completion-message" id="drill-completion-message">
+                                <h3><i data-lucide="trophy"></i> Mission Defined</h3>
+                                <p>You've replaced delusion with data and ambiguity with action. Your foundation is set.</p>
+                            </div>
+                            
+                            <!-- UPDATED: Relevant image with new local path -->
+                            <figure class="course-image">
+                                <img loading="lazy" src="images/mission-clarity-achieved.jpg" alt="A man standing confidently with a clear, illuminated path forward.">
+                                <figcaption>The clarity you've achieved.</figcaption>
+                            </figure>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <footer class="course-ui-footer">
+            <button id="prev-slide" class="slide-nav-btn" aria-label="Previous slide"><i data-lucide="arrow-left"></i> Prev</button>
+            <button id="next-slide" class="slide-nav-btn cta" aria-label="Next slide">Next <i data-lucide="arrow-right"></i></button>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/lucide@latest/dist/lucide.min.js"></script>
+    <script> lucide.createIcons(); </script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="shared/script.js"></script>
+    <script>
+        // ADDED: Unique localStorage key
+        document.addEventListener('DOMContentLoaded', () => {
+            if (document.getElementById('course-slider')) {
+                window.localStorageKey = 'realityArsenalDrillProgress';
+            }
+        });
+    </script>
+</body>
+</html>

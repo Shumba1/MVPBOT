@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | BOTGospel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --background-primary: #100C08;
+            --background-surface: #1A1411;
+            --border-subtle: rgba(219,224,225,.1);
+            --text-primary: #F3F4F5;
+            --text-secondary: #A8B0B1;
+            --text-on-accent: #100C08;
+            --accent-action: #FF9408;
+            --accent-depth: #95122C;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--background-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+        .container { max-width: 700px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navigation */
+        .main-nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(16,12,8,.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 16px 0;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { 
+            font-weight: 900; font-size: 1.5rem; color: var(--text-primary); 
+            letter-spacing: .1em; text-decoration: none; 
+        }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { 
+            color: var(--text-secondary); text-decoration: none; 
+            font-weight: 700; transition: color .2s; 
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-action); }
+        .menu-toggle { 
+            display: none; background: none; border: none; 
+            color: var(--text-primary); cursor: pointer; 
+        }
+
+        /* Hero */
+        .hero-about { padding: 120px 0 60px; text-align: center; }
+        .hero-about h1 { 
+            font-size: clamp(2.3rem, 6vw, 4rem); 
+            font-weight: 900; letter-spacing: -.02em; 
+        }
+        .hero-about .lead { 
+            font-size: 1.2rem; color: var(--text-secondary); 
+            margin-top: 16px; 
+        }
+        .text-accent { color: var(--accent-action); }
+
+        /* Content */
+        .intro-text {
+            max-width: 70ch; margin: 60px auto 40px auto; 
+            text-align: center; font-size: 1.1rem;
+        }
+        .intro-text em { 
+            font-style: italic; color: var(--accent-action); 
+            font-weight: 700; 
+        }
+
+        /* Mini Cards */
+        .mini-grid { 
+            display: grid; gap: 24px; margin: 60px auto; 
+            max-width: 600px; 
+        }
+        .mini-card { 
+            background: var(--background-surface); 
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 32px; text-align: center;
+            transition: transform .3s, border-color .3s;
+        }
+        .mini-card:hover { 
+            transform: translateY(-4px); 
+            border-color: var(--accent-action); 
+        }
+        .mini-card h3 { 
+            margin: 0 0 8px 0; font-size: 1.4rem; 
+            color: var(--accent-action); font-weight: 900; 
+        }
+        .mini-card p { 
+            margin: 0; color: var(--text-secondary); 
+            font-size: 0.95rem; 
+        }
+
+        /* Manifesto */
+        .manifesto { 
+            margin: 60px auto; max-width: 70ch; 
+            text-align: center; 
+        }
+        .manifesto blockquote { 
+            font-style: italic; font-size: 1.2rem; 
+            line-height: 1.5; color: var(--text-primary);
+            margin: 0;
+        }
+        .manifesto blockquote strong { color: var(--accent-action); }
+
+        /* Social Media Section */
+        .social-section { 
+            margin: 80px auto; text-align: center; 
+        }
+        .social-section h2 { 
+            font-size: 1.8rem; margin-bottom: 16px; 
+        }
+        .social-section p { 
+            color: var(--text-secondary); margin-bottom: 40px; 
+        }
+        .social-grid { 
+            display: grid; gap: 24px; margin-top: 32px; 
+        }
+        .social-card {
+            background: var(--background-surface);
+            padding: 24px; border-radius: 10px; 
+            border: 1px solid var(--border-subtle);
+            text-align: center; transition: transform .3s, border-color .3s;
+        }
+        .social-card:hover { 
+            transform: translateY(-4px); 
+            border-color: var(--accent-action); 
+        }
+        .social-icon {
+            margin: 0 auto 12px; background: rgba(255,148,8,.1); 
+            padding: 12px; border-radius: 50%;
+            width: 48px; height: 48px; display: flex; 
+            align-items: center; justify-content: center; 
+            color: var(--accent-action);
+        }
+        .social-card h3 { 
+            font-size: 1.1rem; margin: 0 0 8px 0; 
+            color: var(--text-primary); 
+        }
+        .btn-social {
+            display: inline-block; background: var(--accent-action); 
+            color: var(--text-on-accent); padding: 8px 16px; 
+            border-radius: 6px; font-weight: 700; font-size: 0.9rem;
+            text-decoration: none; transition: transform .2s, box-shadow .2s;
+        }
+        .btn-social:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 8px 25px -10px var(--accent-action); 
+        }
+
+        /* CTA */
+        .cta-panel { margin: 80px auto; text-align: center; }
+        .btn-primary { 
+            display: inline-block; background: var(--accent-action); 
+            color: var(--text-on-accent); padding: 16px 32px; 
+            border-radius: 8px; font-weight: 700; font-size: 1.1rem; 
+            text-decoration: none; transition: transform .2s, box-shadow .2s; 
+        }
+        .btn-primary:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px -10px var(--accent-action); 
+        }
+
+        /* Footer */
+        footer { 
+            padding: 48px 0; text-align: center; 
+            color: var(--text-secondary); margin-top: 80px;
+            border-top: 1px solid var(--border-subtle);
+        }
+        .logo-text { 
+            font-weight: 900; font-size: 1.5rem; 
+            color: var(--text-primary); letter-spacing: .1em; 
+            margin-bottom: 8px; 
+        }
+
+        /* Mobile */
+        @media (min-width: 768px) {
+            .mini-grid { grid-template-columns: repeat(3, 1fr); }
+            .social-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 767px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 73px; left: 0; right: 0;
+                flex-direction: column; gap: 32px; text-align: center;
+                background: var(--background-surface); padding: 32px; 
+                height: calc(100vh - 73px); border-top: 1px solid var(--border-subtle);
+            }
+            .nav-links.active { display: flex; }
+            body.nav-open { overflow: hidden; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="main-nav">
+    <div class="container nav-container">
+        <a href="index.html" class="nav-logo">BOTGOSPEL</a>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Course Library</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+        </ul>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+            <i data-lucide="menu" width="32" height="32"></i>
+        </button>
+    </div>
+</nav>
+
+<header class="hero-about">
+    <div class="container">
+        <h1>WHO WE <span class="text-accent">ARE</span></h1>
+        <p class="lead">Systematic rebellion against engineered loneliness.</p>
+    </div>
+</header>
+
+<main class="container">
+    <p class="intro-text">
+        BOTGospel is the ErosLab initiative that rebuilds men—no tricks, no gimmicks.<br>
+        <em>Ruthless with systems. Empathetic with people.</em>
+    </p>
+
+    <div class="mini-grid">
+        <div class="mini-card">
+            <h3>REBEL</h3>
+            <p>Reject isolation & hollow culture.</p>
+        </div>
+        <div class="mini-card">
+            <h3>SYSTEMISE</h3>
+            <p>Install repeatable competence.</p>
+        </div>
+        <div class="mini-card">
+            <h3>PROVE</h3>
+            <p>Measure real-world results.</p>
+        </div>
+    </div>
+
+    <div class="manifesto">
+        <blockquote>
+            Power without conscience is weakness.<br>
+            We wield <strong>responsible power</strong>—always ethical, always consensual, always growth-centered.
+        </blockquote>
+    </div>
+
+    <section class="social-section">
+        <h2>JOIN THE <span class="text-accent">REBELLION</span></h2>
+        <p>Subscribe everywhere for the complete revolution.</p>
+        
+        <div class="social-grid">
+            <div class="social-card">
+                <div class="social-icon">
+                    <i data-lucide="instagram" width="24" height="24"></i>
+                </div>
+                <h3>Instagram</h3>
+                <a href="https://www.instagram.com/eroslabaura/" class="btn-social">FOLLOW @EROSLABAURA</a>
+            </div>
+
+            <div class="social-card">
+                <div class="social-icon">
+                    <i data-lucide="youtube" width="24" height="24"></i>
+                </div>
+                <h3>YouTube</h3>
+                <a href="https://www.youtube.com/@ErosLab" class="btn-social">SUBSCRIBE</a>
+            </div>
+
+            <div class="social-card">
+                <div class="social-icon">
+                    <i data-lucide="video" width="24" height="24"></i>
+                </div>
+                <h3>TikTok</h3>
+                <a href="https://www.tiktok.com/@ErosLab" class="btn-social">FOLLOW @EROSLAB</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-panel">
+        <a href="courses.html" class="btn-primary">Explore the Blueprints</a>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p class="logo-text">BOTGOSPEL</p>
+        <p>© 2025 BOTGospel. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+    
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+            
+            const icon = menuToggle.querySelector('i');
+            icon.setAttribute('data-lucide', navMenu.classList.contains('active') ? 'x' : 'menu');
+            lucide.createIcons();
+        });
+    }
+</script>
+
+</body>
+</html>

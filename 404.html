@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="shared/style.css">
+    <style>
+        .not-found-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            padding: 2rem;
+        }
+        .not-found-title {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+        .not-found-text {
+            color: var(--color-text);
+            max-width: 400px;
+            margin-bottom: 2rem;
+        }
+        .hub-button {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+        .hub-button:hover {
+            background-color: #ffca8a; /* A lighter shade for hover */
+        }
+    </style>
+</head>
+<body class="course-body">
+    <div class="not-found-container">
+        <h1 class="not-found-title">404 - Lost Signal</h1>
+        <p class="not-found-text">The page you're looking for doesn't exist or has been moved. The path is cold.</p>
+        <a href="index.html" class="hub-button">Return to Mission Hub</a>
+    </div>
+</body>
+</html>

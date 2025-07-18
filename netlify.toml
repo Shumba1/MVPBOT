@@ -1,0 +1,7 @@
+# This is a redirect rule for handling 404 Not Found errors.
+# It tells Netlify to show our custom 404.html page for any path that doesn't exist.
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

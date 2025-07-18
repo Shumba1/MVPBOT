@@ -1,0 +1,401 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>The Frame Control Blueprint - Ironclad Foundation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="stylesheet" href="shared/style.css">
+    <style>
+        .quiz-option { 
+            display: block; 
+            width: 100%; 
+            text-align: left; 
+            background: #1a1612; 
+            border: 1px solid #444; 
+            color: var(--color-text); 
+            padding: 1rem; 
+            border-radius: 8px; 
+            margin-bottom: 0.75rem; 
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+        }
+        .quiz-option:hover { border-color: var(--color-accent); }
+        .quiz-option.selected { 
+            border-color: var(--color-accent); 
+            background: rgba(255, 148, 8, 0.1); 
+        }
+        .quiz-feedback { 
+            display: none; 
+            margin-top: 1rem; 
+            padding: 1rem; 
+            border-radius: 8px; 
+            border: 1px dashed var(--color-accent);
+            background: rgba(255, 148, 8, 0.05);
+        }
+        .quiz-feedback.show { display: block; }
+        .matrix-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 1.5rem; 
+        }
+        .matrix-table th, .matrix-table td { 
+            border: 1px solid #333; 
+            padding: 0.75rem; 
+            text-align: left; 
+        }
+        .matrix-table th { 
+            color: var(--color-accent); 
+            font-weight: 600;
+        }
+        .identity-drill {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .trinity-item {
+            background: #1a1612;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+        .trinity-item label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--color-accent);
+        }
+        .trinity-item textarea {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: var(--color-text);
+            min-height: 100px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body class="course-body">
+    <div class="course-container">
+        <header class="course-ui-header">
+            <a href="courses.html" class="back-to-hub"><i data-lucide="x"></i></a>
+            <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+            <span class="step-counter" id="stepCounter">1 / 16</span>
+        </header>
+
+        <div id="course-slider" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+
+                    <!-- Page 1: Title -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <img src="shared/botgospel-logo.svg" class="logo-brand" alt="BOTGOSPEL logo">
+                            <h1 class="slide-title">THE FRAME CONTROL BLUEPRINT</h1>
+                            <p class="slide-subtitle">Mastering Social Presence and Personal Boundaries</p>
+                            <span class="slide-module-tag">A PREMIUM IRONCLAD FOUNDATION COURSE</span>
+                        </div>
+                    </li>
+
+                    <!-- MODULE 1: THE PHYSICS OF SOCIAL PRESENCE -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <h2 class="slide-header">MODULE 1</h2>
+                            <h1 class="slide-title" style="font-size: 2rem;">Social Presence Essentials</h1>
+                            <p class="slide-subtitle" style="font-size: 1rem;">Core Principles of Confident Interaction</p>
+                        </div>
+                    </li>
+
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE DYNAMICS OF SOCIAL INFLUENCE</h2>
+                            <p>Every interaction involves a subtle negotiation of perspectives. The stronger, more grounded perspective naturally influences the interaction.</p>
+                            <figure class="course-image">
+                                <img src="images/social-presence-dynamics.jpg" alt="An abstract representation of a strong, grounded presence influencing a weaker one.">
+                                <figcaption>Grounding creates natural influence</figcaption>
+                            </figure>
+                            <p>People instinctively evaluate others' confidence and consistency. Your ability to maintain your perspective directly impacts how others respond to you.</p>
+                        </div>
+                    </li>
+
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">MINDSET AS YOUR FOUNDATION</h2>
+                            <p>Your core beliefs shape your presence more than any technique. Inconsistent self-perception creates openings for doubt.</p>
+                            <h3 class="slide-subheader">Example of Limiting Self-Perception:</h3>
+                            <ul>
+                                <li><strong>Belief:</strong> "I'm not interesting enough"</li>
+                                <li><strong>Behavioral Impact:</strong> Hesitant speech, seeking validation, avoiding eye contact</li>
+                                <li><strong>Outcome:</strong> Others mirror this uncertainty, creating distance</li>
+                            </ul>
+                            <p>We'll rebuild this foundation from the ground up.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">YOUR SOCIAL PRESENCE SPECTRUM</h2>
+                            <p>Identify where you currently operate to target your growth:</p>
+                            <figure class="course-image">
+                                <img src="images/social-presence-spectrum.png" alt="An infographic showing four stages of evolution from reactive to projective presence.">
+                                <figcaption>Your evolution path</figcaption>
+                            </figure>
+                            <ol>
+                                <li><strong>Reactive:</strong> Constantly adjusting to others' expectations</li>
+                                <li><strong>Fragile:</strong> Easily disrupted by challenges</li>
+                                <li><strong>Defensive:</strong> Strong but requiring constant protection</li>
+                                <li><strong>Projective:</strong> Naturally influential and consistent</li>
+                            </ol>
+                        </div>
+                    </li>
+
+                    <!-- DRILL 1 -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">SELF-ASSESSMENT: IDENTIFY YOUR DEFAULT MODE</h2>
+                            <p>Which response feels most authentic to you in this situation?</p>
+                            <div class="quiz-container">
+                                <p><strong>Situation:</strong> Someone says, "People who work out constantly seem pretty obsessive." You exercise regularly.</p>
+                                <div class="quiz-option" data-state="Reactive"><strong>A)</strong> "Yeah, some take it too far. I just do it for health."</div>
+                                <div class="quiz-option" data-state="Fragile"><strong>B)</strong> "That's judgmental! What's wrong with self-improvement?"</div>
+                                <div class="quiz-option" data-state="Defensive"><strong>C)</strong> "I disagree. Discipline matters. We can have different views."</div>
+                                <div class="quiz-option" data-state="Projective"><strong>D)</strong> Smiling: "Interesting perspective. What's your approach to wellness?"</div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- MODULE 2: PRACTICAL IMPLEMENTATION -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <h2 class="slide-header">MODULE 2</h2>
+                            <h1 class="slide-title" style="font-size: 2rem;">Practical Implementation</h1>
+                            <p class="slide-subtitle" style="font-size: 1rem;">Tools for Authentic Confidence</p>
+                        </div>
+                    </li>
+                    
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE RESPONSE MATRIX</h2>
+                            <p>Match your response to the situation's demands:</p>
+                            <table class="matrix-table">
+                                <thead>
+                                    <tr>
+                                        <th>Situation Level</th>
+                                        <th>Example</th>
+                                        <th>Your Response</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Minor</strong></td>
+                                        <td>Playful challenge</td>
+                                        <td><strong>Confident Acknowledgement:</strong> A knowing smile</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Moderate</strong></td>
+                                        <td>Differing opinion</td>
+                                        <td><strong>Clear Perspective:</strong> "I see it differently"</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Serious</strong></td>
+                                        <td>Last-minute cancellation</td>
+                                        <td><strong>Boundary Setting:</strong> "Let's reschedule when you can commit"</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Critical</strong></td>
+                                        <td>Disrespect</td>
+                                        <td><strong>Disengage:</strong> Calmly end the interaction</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">NAVIGATING EMOTIONAL MOMENTS</h2>
+                            <p>When someone expresses vulnerability, they're often seeking stability:</p>
+                            <ol>
+                                <li><strong>Genuine Concern:</strong> "I'm nervous about this"
+                                    <br><em>Response:</em> "I understand. We'll take it at your pace"</li>
+                                <li><strong>Past Baggage:</strong> Bringing up previous negative experiences
+                                    <br><em>Response:</em> "That sounds challenging. What are you taking from that now?"</li>
+                                <li><strong>Boundary Testing:</strong> Using history to justify poor behavior
+                                    <br><em>Response:</em> "I respect your experience, but I expect [standard] now"</li>
+                            </ol>
+                        </div>
+                    </li>
+
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">SETTING THE TONE</h2>
+                            <p>Establish positive dynamics from the start:</p>
+                            <ul>
+                                <li><strong>Confident Planning:</strong> "Let's meet at X place at 8. It has great atmosphere"</li>
+                                <li><strong>Inclusive Language:</strong> "We should try that option"</li>
+                                <li><strong>Value Positioning:</strong> "I have an hour before my next commitment - let's make it count"</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- MODULE 3: EMBODYING AUTHENTIC PRESENCE -->
+                     <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <h2 class="slide-header">MODULE 3</h2>
+                            <h1 class="slide-title" style="font-size: 2rem;">Embodying Authentic Presence</h1>
+                            <p class="slide-subtitle" style="font-size: 1rem;">From Technique to Natural Expression</p>
+                        </div>
+                    </li>
+                    
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">CRAFTING YOUR CORE IDENTITY</h2>
+                            <p>True confidence stems from self-knowledge, not techniques. Define your non-negotiables:</p>
+                            <figure class="course-image">
+                                <img src="images/personal-constitution-journal.jpg" alt="An open journal with the words Purpose, Values, and Boundaries highlighted in a focused, noir style.">
+                                <figcaption>Your personal constitution</figcaption>
+                            </figure>
+                        </div>
+                    </li>
+
+                    <!-- DRILL 2 -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">EXERCISE: YOUR PERSONAL CONSTITUTION</h2>
+                            <p>Define your core principles (saved automatically):</p>
+                            <div class="identity-drill">
+                                <div class="trinity-item">
+                                    <label for="mission-value"><i data-lucide="compass"></i> My Purpose</label>
+                                    <textarea id="mission-value" placeholder="My primary focus beyond relationships (career, growth, passions...)"></textarea>
+                                </div>
+                                <div class="trinity-item">
+                                    <label for="non-negotiables"><i data-lucide="shield-x"></i> My Boundaries</label>
+                                    <textarea id="non-negotiables" placeholder="Behaviors I don't accept (disrespect, dishonesty, unreliability...)"></textarea>
+                                </div>
+                                <div class="trinity-item">
+                                    <label for="core-values"><i data-lucide="gem"></i> My Values</label>
+                                    <textarea id="core-values" placeholder="My guiding principles (integrity, growth, compassion...)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">CENTERED AND PRESENT</h2>
+                            <p>With clear principles, you develop calm assurance - viewing social challenges as opportunities rather than threats.</p>
+                            <figure class="course-image">
+                                <img src="images/stability-amidst-chaos.jpg" alt="A man standing calmly and in sharp focus amidst the motion-blurred chaos of a city intersection at night.">
+                                <figcaption>Stability amidst chaos</figcaption>
+                            </figure>
+                            <p>This grounded presence allows you to navigate interactions with authentic confidence.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">BEYOND SOCIAL DYNAMICS</h2>
+                            <p>These principles transform all areas of life:</p>
+                            <ul>
+                                <li><strong>Career:</strong> Confident negotiation comes from knowing your value</li>
+                                <li><strong>Relationships:</strong> Healthy boundaries create mutual respect</li>
+                                <li><strong>Personal Growth:</strong> Clarity of purpose drives meaningful progress</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- FINAL SLIDE -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <h2 class="slide-header"><i data-lucide="award"></i> COURSE COMPLETE</h2>
+                            <p>You now possess the tools to navigate social dynamics with authentic confidence. Remember: true presence comes from consistent practice of these principles.</p>
+                            <span class="slide-module-tag">You've mastered The Frame Control Blueprint</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="course-ui-footer">
+            <button id="prev-slide" class="slide-nav-btn"><i data-lucide="arrow-left"></i> Prev</button>
+            <button id="next-slide" class="slide-nav-btn cta">Next <i data-lucide="arrow-right"></i></button>
+        </footer>
+    </div>
+    
+    <script src="https://unpkg.com/lucide@latest/dist/lucide.min.js"></script>
+    <script> 
+        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            // Quiz functionality
+            const quizContainer = document.querySelector('.quiz-container');
+            if (quizContainer) {
+                const options = quizContainer.querySelectorAll('.quiz-option');
+                const feedbackBox = quizContainer.querySelector('.quiz-feedback');
+                
+                options.forEach(option => {
+                    option.addEventListener('click', function() {
+                        options.forEach(opt => {
+                            opt.classList.remove('selected');
+                            opt.style.opacity = '0.6';
+                        });
+                        this.classList.add('selected');
+                        this.style.opacity = '1';
+                        
+                        const state = this.dataset.state;
+                        let feedbackText = '';
+                        
+                        switch(state) {
+                            case 'Reactive':
+                                feedbackText = '<strong>Reactive Approach</strong><br>You adapt to others at the expense of your own perspective. We\'ll build more grounded confidence.';
+                                break;
+                            case 'Fragile':
+                                feedbackText = '<strong>Fragile Response</strong><br>Challenges trigger strong emotional reactions. We\'ll develop resilience tools.';
+                                break;
+                            case 'Defensive':
+                                feedbackText = '<strong>Defensive Stance</strong><br>You protect your views but create separation. We\'ll transform this into connection.';
+                                break;
+                            case 'Projective':
+                                feedbackText = '<strong>Projective Presence</strong><br>Excellent! You maintain perspective while engaging others. We\'ll amplify this strength.';
+                                break;
+                        }
+                        
+                        feedbackBox.innerHTML = feedbackText;
+                        feedbackBox.classList.add('show');
+                    });
+                });
+            }
+            
+            // Constitution saving
+            const constitutionElements = {
+                mission: document.getElementById('mission-value'),
+                boundaries: document.getElementById('non-negotiables'),
+                values: document.getElementById('core-values')
+            };
+            
+            const storageKey = 'frameControlConstitution';
+            
+            // Load saved constitution
+            const savedData = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            for (const [key, element] of Object.entries(constitutionElements)) {
+                if(element) {
+                   if (savedData[key]) element.value = savedData[key];
+                
+                    element.addEventListener('input', () => {
+                        const currentData = JSON.parse(localStorage.getItem(storageKey)) || {};
+                        currentData[key] = element.value;
+                        localStorage.setItem(storageKey, JSON.stringify(currentData));
+                    }); 
+                }
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="shared/script.js"></script>
+</body>
+</html>

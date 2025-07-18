@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>The Gaze Protocol – Ironclad Foundation</title>
+
+    <!-- Library CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="shared/style.css">
+
+    <!-- Course-specific tweaks -->
+    <style>
+        .gaze-drill { margin-top: 1.5rem; }
+        .gaze-drill-item { margin-bottom: 1.5rem; }
+        .gaze-drill-item label { display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:1.1rem;color:var(--color-accent);margin-bottom:.6rem; }
+        .gaze-drill-item textarea{width:100%;height:80px;background:#1a1612;border:1px solid #444;color:var(--color-text-muted);padding:.75rem;border-radius:8px;font-size:1rem;resize:vertical;transition:border-color .2s;}
+        .gaze-drill-item textarea:focus{outline:none;border-color:var(--color-accent);}
+        .gaze-levels-table{width:100%;border-collapse:collapse;margin-top:1.5rem;}
+        .gaze-levels-table th,.gaze-levels-table td{border:1px solid #333;padding:.75rem;text-align:left;}
+        .gaze-levels-table th{background:#1a1612;color:var(--color-accent);font-size:.9rem;}
+        .gaze-levels-table td{font-size:.9rem;color:var(--color-text-muted);}
+    </style>
+</head>
+<body class="course-body">
+<div class="course-container">
+
+    <!-- HEADER -->
+    <header class="course-ui-header">
+        <!-- CRITICAL: back link -->
+        <a href="courses.html" class="back-to-hub" aria-label="Exit to course hub"><i data-lucide="x"></i></a>
+        <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+        <span class="step-counter" id="stepCounter">1 / 11</span>
+    </header>
+
+    <!-- SLIDER -->
+    <div id="course-slider" class="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+
+                <!-- 1 · TITLE -->
+                <li class="splide__slide">
+                    <div class="slide-content centered">
+                        <img src="shared/botgospel-logo.svg" class="logo-brand" alt="BOTGOSPEL logo">
+                        <h1 class="slide-title">THE GAZE PROTOCOL</h1>
+                        <p class="slide-subtitle">A masterclass on shifting from observer to actor</p>
+                        <span class="slide-module-tag">A PREMIUM IRONCLAD FOUNDATION COURSE</span>
+                    </div>
+                </li>
+
+                <!-- 2 · MODULE 1 BANNER -->
+                <li class="splide__slide">
+                    <div class="slide-content centered">
+                        <h2 class="slide-header">MODULE 1</h2>
+                        <h1 class="slide-title" style="font-size:2rem;">The Physics of the Gaze</h1>
+                        <p class="slide-subtitle" style="font-size:1rem;">Why your eyes dictate your reality</p>
+                    </div>
+                </li>
+
+                <!-- 3 · OBSERVER VS PARTICIPANT -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">OBSERVER VS. PARTICIPANT</h2>
+                        <p>Your gaze is a non-verbal switch that decides your role in any social moment. Ask yourself: <strong>“Am I watching the story, or am I in the story?”</strong></p>
+                        <figure class="course-image">
+                            <img loading="lazy" src="images/gaze-protocol-observer-vs-participant.jpg" alt="A split image showing a man first as a powerless observer looking down, then as a powerful participant making direct eye contact.">
+                            <figcaption>The observer feels safe but powerless; the participant feels exposed but powerful.</figcaption>
+                        </figure>
+                        <p>Averted eyes feed your internal monologue of fear. Direct eyes spark interaction and move the tension outward.</p>
+                    </div>
+                </li>
+
+                <!-- 4 · THREE LEVELS TABLE -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">THE THREE LEVELS OF EYE CONTACT</h2>
+                        <p>Calibrate your intent with surgical precision.</p>
+                        <table class="gaze-levels-table">
+                            <thead><tr><th>Level</th><th>Description</th><th>Intent</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1. Social Glance</strong></td><td>Brief (1–2 s), often with a nod.</td><td>“I acknowledge you.”</td></tr>
+                                <tr><td><strong>2. Look of Interest</strong></td><td>Longer (3–4 s) with a slight smile.</td><td>“I’m interested.”</td></tr>
+                                <tr><td><strong>3. Intimate Gaze</strong></td><td>Soft focus that breaks norms.</td><td>“I see you.”</td></tr>
+                            </tbody>
+                        </table>
+                        <p>The protocol stays at Level 2—confident yet calibrated.</p>
+                    </div>
+                </li>
+
+                <!-- 5 · MODULE 2 BANNER -->
+                <li class="splide__slide">
+                    <div class="slide-content centered">
+                        <h2 class="slide-header">MODULE 2</h2>
+                        <h1 class="slide-title" style="font-size:2rem;">The 3-Second Protocol</h1>
+                        <p class="slide-subtitle" style="font-size:1rem;">From “caught” to “connected”</p>
+                    </div>
+                </li>
+
+                <!-- 6 · FLINCH & FLEE -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">THE FLINCH-AND-FLEE REFLEX</h2>
+                        <p>When her eyes lock onto yours, most men panic and dart away—confirming creep vibes. Being “caught” is actually an unspoken invitation to lead.</p>
+                        <blockquote class="highlight-quote">Your protocol turns that alarm into opportunity.</blockquote>
+                    </div>
+                </li>
+
+                <!-- 7 · STEP 1 -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">STEP 1 · ANCHOR</h2>
+                        <h3 class="slide-subheader">First second</h3>
+                        <p><strong>Do not look away.</strong> Hold the gaze. To her, it says the look was intentional. To you, it overrides panic.</p>
+                        <figure class="course-image">
+                            <img loading="lazy" src="images/gaze-protocol-anchor.jpg" alt="A symbolic image of an anchor representing a steady and intentional gaze amidst chaos.">
+                            <figcaption>Your gaze is the anchor—steady amid internal waves.</figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <!-- 8 · STEP 2 -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">STEP 2 · ACKNOWLEDGE</h2>
+                        <h3 class="slide-subheader">Second second</h3>
+                        <p>Shift the moment from a stare to appreciation:</p>
+                        <ul>
+                            <li><strong>Slight, confident smile</strong> – default signal of approval.</li>
+                            <li><strong>Slow nod</strong> – formal but powerful.</li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- 9 · STEP 3 -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">STEP 3 · ACT</h2>
+                        <h3 class="slide-subheader">Seconds 3 & 4</h3>
+                        <p>Read her data, then:</p>
+                        <ul>
+                            <li><strong>Green light</strong> – she smiles, holds, or re-checks ? approach.</li>
+                            <li><strong>Red light</strong> – she looks away and never looks back ? disconnect with grace.</li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- 10 · DRILL -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">DRILL · PRE-LOAD YOUR PROTOCOL</h2>
+                        <p>Preparation is power. Write your plan so it fires automatically in the field.</p>
+                        <div class="gaze-drill">
+                            <div class="gaze-drill-item">
+                                <label for="ack-choice"><i data-lucide="mouse-pointer-click"></i> My Acknowledgment Choice</label>
+                                <textarea id="ack-choice" placeholder="Smile or nod? Why?"></textarea>
+                            </div>
+                            <div class="gaze-drill-item">
+                                <label for="green-opener"><i data-lucide="zap"></i> My Green-Light Opener</label>
+                                <textarea id="green-opener" placeholder="Exact first sentence on approach…"></textarea>
+                            </div>
+                            <div class="gaze-drill-item">
+                                <label for="red-thought"><i data-lucide="shield"></i> My Red-Light Self-Talk</label>
+                                <textarea id="red-thought" placeholder="e.g., “Data logged. Her loss. Next.”"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- 11 · FINAL -->
+                <li class="splide__slide">
+                    <div class="slide-content centered">
+                        <h2 class="slide-header"><i data-lucide="award"></i>MISSION COMPLETE</h2>
+                        <p>You now convert eye contact into confident initiation. No more getting “caught”—you create the moment.</p>
+                        <span class="slide-module-tag">The Gaze Protocol completed.</span>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER NAV -->
+    <footer class="course-ui-footer">
+        <button id="prev-slide" class="slide-nav-btn" aria-label="Previous slide"><i data-lucide="arrow-left"></i> Prev</button>
+        <button id="next-slide" class="slide-nav-btn cta" aria-label="Next slide">Next <i data-lucide="arrow-right"></i></button>
+    </footer>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/lucide@latest/dist/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script src="shared/script.js"></script>
+
+<!-- Unique localStorage key -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('course-slider')) {
+        window.localStorageKey = 'gazeProtocolDrillProgress';
+    }
+});
+</script>
+</body>
+</html>

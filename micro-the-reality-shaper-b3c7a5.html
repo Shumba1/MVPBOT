@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>The Reality Shaper - Ironclad Foundation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="stylesheet" href="shared/style.css">
+    <style>
+        .identity-drill textarea { 
+            width: 100%; 
+            height: 80px; 
+            background: #1a1612; 
+            border: 1px solid #444; 
+            color: var(--color-text); 
+            padding: 0.75rem; 
+            border-radius: 8px; 
+            font-size: 1rem; 
+            box-sizing: border-box; 
+            resize: vertical; 
+            margin-top: 0.5rem; 
+            transition: border-color 0.3s ease;
+        }
+        .identity-drill textarea:focus { 
+            outline: none; 
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 2px rgba(255, 148, 8, 0.2);
+        }
+        .identity-drill label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+    </style>
+</head>
+<body class="course-body">
+    <div class="course-container">
+        <header class="course-ui-header">
+            <a href="courses.html" class="back-to-hub" aria-label="Exit to course hub"><i data-lucide="x"></i></a>
+            <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+            <span class="step-counter" id="stepCounter">1 / 6</span>
+        </header>
+
+        <div id="course-slider" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+
+                    <!-- Page 1: Title -->
+                    <li class="splide__slide">
+                        <div class="slide-content centered">
+                            <img src="shared/botgospel-logo.svg" class="logo-brand" alt="BOTGOSPEL logo">
+                            <h1 class="slide-title">THE REALITY SHAPER</h1>
+                            <p class="slide-subtitle">How Your Mindset Creates Your Reality</p>
+                            <span class="slide-module-tag">An IRONCLAD FOUNDATION Module</span>
+                        </div>
+                    </li>
+
+                    <!-- Page 2: Promise -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">PROMISE</h2>
+                            <p>You will understand and dismantle the self-fulfilling prophecies that sabotage your social interactions. Stop blaming external factors and learn why your internal state creates the exact negative responses you experience.</p>
+                            
+                            <figure class="course-image">
+                                <!-- MODIFICATION 1: Image path updated -->
+                                <img loading="lazy" src="images/reality-shaper-mirror-reflection.jpg" alt="A man looking in a mirror sees a more confident version of himself reflected back.">
+                                <figcaption>Your internal state dictates your external reality.</figcaption>
+                            </figure>
+                        </div>
+                    </li>
+
+                    <!-- Page 3: The Flaw -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE FLAW: THE LOCATION EXCUSE</h2>
+                            <p>The person who claims "people here are unfriendly" has surrendered responsibility for their results. This external blame creates a self-reinforcing cycle.</p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-card bad-example">
+                                    <h3><i data-lucide="x-circle"></i> The Problem</h3>
+                                    <ul>
+                                        <li>Blaming location/culture for results</li>
+                                        <li>Believing people can sense your "outsider" status</li>
+                                        <li>Approaching with defensive energy</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="comparison-card good-example">
+                                    <h3><i data-lucide="check-circle"></i> The Reality</h3>
+                                    <ul>
+                                        <li>Your energy creates others' responses</li>
+                                        <li>Defensive behavior triggers defensiveness</li>
+                                        <li>The location is neutral - you create the experience</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Page 4: The Doctrine -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE DOCTRINE: METRICS MINDSET KILLS CONNECTION</h2>
+                            <p>When you turn social interactions into performance metrics—counting approaches, tracking results—you adopt the <strong>Contest Mentality</strong>.</p>
+                            
+                            <figure class="course-image">
+                                <!-- MODIFICATION 2: Image path updated -->
+                                <img loading="lazy" src="images/metrics-vs-connection-scale.jpg" alt="A scale weighing cold, hard metrics on one side and warm, human connection on the other.">
+                                <figcaption>True connection can't be measured by numbers.</figcaption>
+                            </figure>
+                            
+                            <p>This fails because people sense when they're being measured, the pressure creates unnatural behavior, and you see them as objectives rather than individuals.</p>
+                        </div>
+                    </li>
+
+                    <!-- Page 5: The Protocol -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE SOLUTION: THE PRESENCE MINDSET</h2>
+                            <p>Shift your objective from outcome to experience:</p>
+                            <ol>
+                                <li><strong>Focus on Enjoyment:</strong> Your primary goal is to have authentic interactions</li>
+                                <li><strong>Operate from Curiosity:</strong> Be genuinely interested in people's stories</li>
+                                <li><strong>Redefine Success:</strong> Value connection over validation</li>
+                            </ol>
+                            
+                            <div class="highlight-quote">
+                                <p>"When you stop needing a specific outcome, you become free to create genuine connections that naturally lead to better outcomes."</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Page 6: The Drill -->
+                    <li class="splide__slide">
+                        <div class="slide-content">
+                            <h2 class="slide-header">THE DRILL: BELIEF AUDIT</h2>
+                            <p>Uncover your hidden, limiting beliefs. Answer with complete honesty:</p>
+                            <div class="identity-drill">
+                                <label for="q1">1. My immediate thought when seeing someone I'm attracted to:</label>
+                                <textarea id="q1" placeholder="e.g., 'She's out of my league' or 'I need to impress her'"></textarea>
+                                
+                                <label for="q2">2. What I believe is the real reason for past rejections:</label>
+                                <textarea id="q2" placeholder="e.g., 'I'm not attractive enough' or 'People here are judgmental'"></textarea>
+                                
+                                <label for="q3">3. My core belief about dating/social dynamics:</label>
+                                <textarea id="q3" placeholder="e.g., 'Dating is stacked against average men'"></textarea>
+                                
+                                <label for="q4">4. What I'd need to change to be successful:</label>
+                                <textarea id="q4" placeholder="e.g., 'Become wealthy' or 'Look completely different'"></textarea>
+                            </div>
+                            <p class="slide-subheader">Review without judgment - these beliefs shape your reality</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="course-ui-footer">
+            <button id="prev-slide" class="slide-nav-btn" aria-label="Previous slide"><i data-lucide="arrow-left"></i> Prev</button>
+            <button id="next-slide" class="slide-nav-btn cta" aria-label="Next slide">Next <i data-lucide="arrow-right"></i></button>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/lucide@latest/dist/lucide.min.js"></script>
+    <script> lucide.createIcons(); </script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="shared/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.localStorageKey = 'realityShaperProgress';
+        });
+    </script>
+</body>
+</html>

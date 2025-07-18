@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>The Conversation Engine – Ironclad Foundation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="stylesheet" href="shared/style.css">
+    <!-- STYLES ADDED FOR ENHANCED PRESENTATION -->
+    <style>
+        .flowchart{display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0}
+        .flow-step{display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(26,22,18,.7);
+                   border:1px solid #333;border-radius:8px;transition:.3s}
+        .flow-step:hover{border-color:var(--color-accent);transform:translateY(-3px)}
+        .step-number{width:40px;height:40px;background:var(--color-accent);color:var(--color-bg);border-radius:50%;
+                     display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+        .mission-icon{width:24px;height:24px;stroke:var(--color-accent);flex-shrink:0}
+    </style>
+</head>
+<body class="course-body">
+<div class="course-container">
+
+    <!-- HEADER -->
+    <header class="course-ui-header">
+        <a href="courses.html" class="back-to-hub" aria-label="Exit to course hub"><i data-lucide="x"></i></a>
+        <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+        <span class="step-counter" id="stepCounter">1 / 8</span>
+    </header>
+
+    <!-- SLIDER -->
+    <div id="course-slider" class="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+
+                <!-- 1 · TITLE -->
+                <li class="splide__slide">
+                    <div class="slide-content centered">
+                        <img src="shared/botgospel-logo.svg" class="logo-brand" alt="BOTGOSPEL logo">
+                        <h1 class="slide-title">THE CONVERSATION ENGINE</h1>
+                        <p class="slide-subtitle">Install the OCQ System to Never Run Out of Things to Say</p>
+                        <span class="slide-module-tag">An IRONCLAD FOUNDATION Module</span>
+                    </div>
+                </li>
+
+                 <!-- 2 · PROMISE -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">PROMISE</h2>
+                        <p>You will install a simple, three-step system that fuels endless conversation. You’ll eliminate awkward silences, escape interview mode, and handle both one-on-one and group dynamics with natural flow.</p>
+                        <figure class="course-image">
+                            <img loading="lazy" src="images/conversation-engine_02_promise.jpg" alt="Visual metaphor of a smoothly running conversation engine">
+                            <figcaption>Your new conversation engine – always running smoothly.</figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <!-- 3 · FLAW -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">THE FLAW · CONVERSATION STALL</h2>
+                        <p>Most conversations stall because people slip into boring interview mode (“Where are you from? What do you do?”) or launch into monologues, dominating the conversation. Both kill chemistry instantly.</p>
+                        <figure class="course-image">
+                            <img loading="lazy" src="images/conversation-engine_03_flaw.jpg" alt="Broken record symbolising stalled conversation">
+                            <figcaption>The painful result of a conversation stall.</figcaption>
+                        </figure>
+                        <blockquote>“Stalled conversations are inexperienced territory. Today you install an engine that never stalls and keeps dialogue flowing naturally.”</blockquote>
+                    </div>
+                </li>
+
+                <!-- 4 · DOCTRINE (OCQ) - UPDATED -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">DOCTRINE · CONVERSATION IS PING-PONG</h2>
+                        <p>The goal is a balanced exchange of energy and information. The OCQ Engine automates that balance.</p>
+                        <div class="flowchart">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <i data-lucide="eye" class="mission-icon"></i>
+                                <div><strong>Observe:</strong> Spot something specific and genuine.</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <i data-lucide="message-square-text" class="mission-icon"></i>
+                                <div><strong>Comment:</strong> Give your personal take or reaction.</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <i data-lucide="help-circle" class="mission-icon"></i>
+                                <div><strong>Question:</strong> Ask an open-ended question that invites a story.</div>
+                            </div>
+                        </div>
+                        <figure class="course-image">
+                            <img loading="lazy" src="images/conversation-engine_04_doctrine.png" alt="OCQ cycle diagram">
+                            <figcaption>The self-sustaining conversation loop.</figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <!-- 5 · PROTOCOL (OCQ EXAMPLE) - UPDATED -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">PROTOCOL · MASTERING THE OCQ CYCLE</h2>
+                        <h3 class="slide-subheader">Coffee-Shop Example</h3>
+                        <div class="flowchart">
+                            <div class="flow-step">
+                                <div class="step-number">O</div>
+                                <i data-lucide="book-open" class="mission-icon"></i>
+                                <div>“That book looks well-loved — it’s practically falling apart.”</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">C</div>
+                                <i data-lucide="award" class="mission-icon"></i>
+                                <div>“A book with battle scars always earns my respect.”</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">Q</div>
+                                <i data-lucide="sparkles" class="mission-icon"></i>
+                                <div>“What’s the most impactful thing you’ve read in it lately?”</div>
+                            </div>
+                        </div>
+                        <h3 class="slide-subheader">The Two-Breath Rule</h3>
+                        <p>After you speak, give space for two of her breaths. No response? Your last turn ran too long. Adjust.</p>
+                    </div>
+                </li>
+
+                <!-- 6 · PROTOCOL (GROUP – D-D-D) - UPDATED -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">PROTOCOL · GROUP DYNAMICS (D-D-D)</h2>
+                        <p>Groups require a specific protocol. Use this three-step system for entry and engagement:</p>
+                        <div class="flowchart">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <i data-lucide="shield-off" class="mission-icon"></i>
+                                <div><strong>Disarm:</strong> “Quick poll — whose socks are the most outrageous?”</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <i data-lucide="crosshair" class="mission-icon"></i>
+                                <div><strong>Direct:</strong> “Yours are surprisingly tame; I expected more from a sock expert.”</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <i data-lucide="log-out" class="mission-icon"></i>
+                                <div><strong>Depart:</strong> “I’m grabbing a drink — join me, and we’ll debate sock philosophy.”</div>
+                            </div>
+                        </div>
+                        <figure class="course-image">
+                            <img loading="lazy" src="images/conversation-engine_06_protocol.jpg" alt="Visualising the D-D-D group approach">
+                            <figcaption>A simple, repeatable system for group entry.</figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <!-- 7 · QUIZ -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">QUICK CHECK · SPOT THE OCQ</h2>
+                        <p>Which option demonstrates a true OCQ sequence?</p>
+                        <div class="quiz-container" id="ocq-quiz">
+                            <div class="quiz-option" data-feedback="Incorrect. This is just a generic, low-effort opener. It lacks a specific Observation and Comment."><strong>A)</strong> “Nice weather today. Do you come here often?”</div>
+                            <div class="quiz-option" data-feedback="Incorrect. This starts with an observation ('Cool tattoo') but immediately shifts to a monologue, failing to ask a Question."><strong>B)</strong> “Cool tattoo. I’ve got three myself. My first one was …”</div>
+                            <div class="quiz-option" data-feedback="Correct! This follows the sequence perfectly: Observe (detailed tattoo), Comment (artist is gifted), and an open-ended Question."><strong>C)</strong> “That tattoo has stunning detail. The artist must be gifted. What’s the story behind it?”</div>
+                            <div class="quiz-option" data-feedback="Incorrect. This is 'Interview Mode.' It's just two questions back-to-back without the OCQ structure."><strong>D)</strong> “Do you like tattoos? Where are you from?”</div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- 8 · DRILL -->
+                <li class="splide__slide">
+                    <div class="slide-content">
+                        <h2 class="slide-header">THE DRILL · 7-DAY ENGINE TEST</h2>
+                        <p>Install the OCQ cycle as a reflex with this daily practice:</p>
+                        <div class="day-tracker">
+                            <div class="day-item" data-day="1"><div class="day-number">Day 1</div><div class="day-status">Write five OCQ sequences based on your current surroundings.</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                            <div class="day-item" data-day="2"><div class="day-number">Day 2</div><div class="day-status">Use one OCQ in a low-stakes interaction (cashier/barista).</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                            <div class="day-item" data-day="3"><div class="day-number">Day 3</div><div class="day-status">Use OCQ in two separate interactions.</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                            <div class="day-item" data-day="4"><div class="day-number">Day 4</div><div class="day-status">Maintain a single conversation using three OCQ cycles.</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                            <div class="day-item" data-day="5"><div class="day-number">Day 5</div><div class="day-status">Mentally rehearse a full D-D-D group approach.</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                            <div class="day-item" data-day="6"><div class="day-number">Day 6</div><div class="day-status">Use the “Disarm” step in a real group scenario.</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                            <div class="day-item" data-day="7"><div class="day-number">Day 7</div><div class="day-status">Execute a full D-D-D sequence in a group.</div><div class="day-checkbox"><i data-lucide="check" class="completion-icon"></i></div></div>
+                        </div>
+                        <div class="completion-message" id="drill-completion-message">
+                            <h3><i data-lucide="trophy"></i> Engine Installed</h3>
+                            <p>You now navigate social interactions with confidence and endless material. Awkward silences are history.</p>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER NAV -->
+    <footer class="course-ui-footer">
+        <button id="prev-slide" class="slide-nav-btn" aria-label="Previous slide"><i data-lucide="arrow-left"></i> Prev</button>
+        <button id="next-slide" class="slide-nav-btn cta" aria-label="Next slide">Next <i data-lucide="arrow-right"></i></button>
+    </footer>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/lucide@latest/dist/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script src="shared/script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Set unique localStorage key for this course's drill
+    if (document.getElementById('course-slider')){
+        window.localStorageKey = 'conversationEngineDrillProgress';
+    }
+});
+</script>
+</body>
+</html>
