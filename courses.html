@@ -17,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="shared/style.css">
     
+    <!-- Payhip script loaded first without defer -->
+    <script src="https://payhip.com/payhip.js"></script>
+    
     <style>
         /* Variables from index.html for nav compatibility */
         :root {
@@ -258,11 +261,8 @@
         }
     </style>
 
-    <!-- Lucide icons loaded first, with defer -->
+    <!-- Lucide icons loaded with defer -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
-    
-<!-- Payhip overlay script -->
-<script src="https://payhip.com/payhip.js" defer></script>
 </head>
 <body>
 
@@ -306,6 +306,15 @@
 <!-- Main page logic -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    // Wait for Payhip to be available
+    function waitForPayhip(callback) {
+        if (window.Payhip) {
+            callback();
+        } else {
+            setTimeout(() => waitForPayhip(callback), 50);
+        }
+    }
+
     // ---- ICONS RENDERED FIRST ---- //
     if (typeof lucide !== 'undefined') { 
         lucide.createIcons(); 
@@ -387,12 +396,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="price">${b.price}</span>
                         <span class="strikethrough">${b.strikethrough}</span>
                     </div>
-                    <a href="https://payhip.com/b/${b.payhipKey}"
-                       class="cta-button premium-cta bundle-cta payhip-buy-button"
-                       data-theme="none"
-                       data-product="${b.payhipKey}">
-                       Unlock Now
-                    </a>
+                    <button class="cta-button premium-cta bundle-cta" 
+                            data-payhip-key="${b.payhipKey}">
+                        Unlock Now
+                    </button>
                 </div>
             `;
             bundleGrid.insertAdjacentHTML('beforeend', card);
@@ -409,12 +416,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const cta = isFree ?
                 `<a href="${c.link}" class="cta-button ${btnClass}">${btnText}</a>` :
-                `<a href="https://payhip.com/b/${c.payhipKey}"
-                    class="cta-button ${btnClass} payhip-buy-button"
-                    data-theme="none"
-                    data-product="${c.payhipKey}">
+                `<button class="cta-button ${btnClass}" 
+                          data-payhip-key="${c.payhipKey}">
                     ${btnText}
-                 </a>`;
+                 </button>`;
 
             const card = `
                 <div class="course-card" data-category="${c.category}">
@@ -444,6 +449,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
+    }
+
+    // Add Payhip click handlers
+    function addPayhipClickHandlers() {
+        document.querySelectorAll('[data-payhip-key]').forEach(button => {
+            button.addEventListener('click', function() {
+                const productKey = this.getAttribute('data-payhip-key');
+                if (window.Payhip && window.Payhip.Checkout) {
+                    window.Payhip.Checkout.open({
+                        product: productKey
+                    });
+                } else {
+                    console.error('Payhip not loaded properly');
+                }
+            });
+        });
     }
 
     // Filter functionality
@@ -481,9 +502,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Initial Render
-    renderBundles();
-    renderCourses();
+    // Initialize everything
+    waitForPayhip(() => {
+        renderBundles();
+        renderCourses();
+        addPayhipClickHandlers();
+    });
 });
 </script>
 
