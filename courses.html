@@ -15,11 +15,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="shared/style.css">
     
     <style>
-        /* [All existing CSS from your original file remains unchanged] */
-        :root { --color-surface: #1A1411; --border-subtle: rgba(255,255,255,0.1); }
+        /* Base styles from Version 1 header and structure */
+        :root { 
+            --color-bg: #100C08; 
+            --color-text: #F3F4F5; 
+            --color-text-muted: #a9afb1;
+            --color-accent: #FF9408;
+            --color-accent-deep: #CA3F16;
+            --color-accent-darkest: #95122C;
+            --font-primary: 'Inter', sans-serif;
+            --color-surface: #1A1411; 
+            --border-subtle: rgba(255,255,255,0.1); 
+        }
+
+        /* Universal overflow prevention */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        body { 
+            background-color: var(--color-bg); 
+            font-family: var(--font-primary); 
+            margin: 0;
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale; 
+            color: var(--color-text);
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        p, li, span, div, h1, h2, h3, h4, h5, h6 {
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+        }
+
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
         .main-nav { position: sticky; top: 0; z-index: 1000; background: rgba(16, 12, 8, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-subtle); padding: 16px 0; width: 100%; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
@@ -28,15 +61,40 @@
         .nav-links a { color: var(--color-text-muted); text-decoration: none; font-weight: 700; transition: color .2s; }
         .nav-links a:hover, .nav-links a.active { color: var(--color-accent); }
         .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--color-text); z-index: 1001; }
+        
+        /* Header styles from Version 1 */
         .hub-header { text-align: center; padding: 2rem 1rem 0 1rem; }
-        .hub-header h1 { margin-bottom: 0.5rem; font-size: 2.5rem; font-weight: 700; }
+        .hub-header h1 { margin-bottom: 0.5rem; font-size: clamp(1.8rem, 8vw, 2.5rem); font-weight: 700; }
         .hub-header > p { font-size: 1.1rem; color: #aaa; max-width: 650px; margin: 0 auto 2rem auto; }
         .promo-banner { background: linear-gradient(135deg, #ff6b35, #ff8c42); color: white; text-align: center; padding: 1rem; margin: 2rem 0; border-radius: 8px; font-weight: 600; animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
-        .section-title { text-align: center; font-size: 2rem; color: var(--color-accent); margin: 3rem 0 1.5rem 0; padding-bottom: 0.5rem; border-bottom: 1px solid #333; }
-        .bundle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; padding: 0 1rem; }
-        .bundle-card { background: #1a1612; border: 1px solid #333; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; transition: all 0.3s ease; }
-        .bundle-card:hover { transform: translateY(-5px); border-color: var(--color-accent); }
+
+        /* Section Title and Subtitle styles from Version 2 */
+        .section-title { 
+            text-align: center; 
+            font-size: clamp(1.5rem, 6vw, 2rem); 
+            color: var(--color-accent); 
+            margin: 3rem auto 1rem auto; 
+            padding-bottom: 0.5rem; 
+            border-bottom: 1px solid #333;
+            max-width: 1100px;
+            padding: 0 1rem;
+        }
+        
+        .section-subtitle { 
+            text-align: center; 
+            max-width: 600px; 
+            margin: 0 auto 2.5rem auto; 
+            color: var(--color-text-muted); 
+            line-height:1.6;
+        }
+
+        /* Bundle Grid and Enhanced Card Styles from Version 2 */
+        .bundle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .bundle-card { background: #1a1612; border: 1px solid #333; border-radius: 16px; padding: 1.5rem; display: flex; flex-direction: column; transition: all 0.3s ease; position:relative; }
+        .bundle-card:hover { transform: translateY(-8px); border-color: var(--color-accent); box-shadow: 0 12px 32px -18px rgba(255,148,8,.25); }
+        .bundle-card.is-flagship { border-color: var(--color-accent); box-shadow: 0 0 25px -5px rgba(255,148,8,.15); }
+        .bundle-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--color-accent); color: var(--color-bg); padding: 6px 16px; border-radius: 99px; font-size: 0.8rem; font-weight: 700; }
         .bundle-card h3 { font-size: 1.5rem; color: var(--color-accent); margin-top: 0; }
         .bundle-card .bundle-subtitle { color: #ccc; margin-bottom: 1rem; }
         .bundle-card .bundle-includes { font-size: 0.9rem; color: #aaa; margin-bottom: 1rem; flex-grow: 1; }
@@ -44,14 +102,69 @@
         .bundle-pricing { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.5rem; }
         .bundle-pricing .price { font-size: 2rem; font-weight: 700; color: #fff; }
         .bundle-pricing .strikethrough { text-decoration: line-through; color: #888; }
+        
+        /* Course Grid and Card styles from Version 2 */
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .course-card { display: flex; flex-direction: column; background-color: #1a1612; border: 1px solid #333; border-radius: 12px; padding: 1.5rem; transition: all 0.3s ease; position: relative; }
+        .course-card:hover { transform: translateY(-5px); border-color: rgba(255,148,8,.5); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .card-header i { width: 32px; height: 32px; stroke: var(--color-accent); stroke-width: 1.5px; }
+        .category-tag { background-color: rgba(255,255,255,0.05); color: var(--color-text-muted); padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+        .card-body { flex-grow: 1; display: flex; flex-direction: column; }
+        .card-title { font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text); }
+        .card-subtitle { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+        .card-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, margin-top 0.4s ease-out; }
+        .card-details p { font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted); margin: 0; padding-top: 1rem; border-top: 1px solid #333; }
+        .course-card.details-active .card-details { max-height: 500px; margin-top: 1rem; }
+        .card-footer { display:flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1rem; border-top: 1px solid #333; }
+        .details-btn { background: none; border: 1px solid #444; color: var(--color-text-muted); padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 0.25rem; font-size: 0.8rem; font-weight: 600; transition: all 0.2s ease; }
+        .details-btn:hover { color: var(--color-text); border-color: var(--color-accent); }
+        .details-btn i { width: 16px; height: 16px; transition: transform 0.3s ease-out, stroke 0.2s ease; }
+        .course-card.details-active .details-btn i { transform: rotate(180deg); stroke: var(--color-accent); }
+        .price-action-wrapper { display: flex; align-items: center; gap: 1rem; }
+        
+        /* CTA Button styles from Version 2 */
+        .cta-button { padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s ease; white-space: normal; text-align: center; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+        .cta-button:hover { transform: scale(1.05); }
+        .cta-button.free-cta { background: transparent; border: 1px solid var(--color-accent); color: var(--color-accent); }
+        .cta-button.free-cta:hover { background: rgba(255,148,8,.1); }
+        .cta-button.premium-cta { background-color: var(--color-accent-deep); color: var(--color-text); }
         .bundle-cta { width: 100%; }
+        
+        /* Course Grouping & Info Styles from Version 2 */
+        .course-bundle-info { background: rgba(255,148,8,.08); padding: .25rem .6rem; border-radius: 99px; font-weight: 600; font-size: .75rem; text-align: center; color: var(--color-accent); }
+        .course-bundle-info strong { font-weight: 700; color: var(--color-accent); }
+        .course-group-header { grid-column: 1 / -1; margin: 2.5rem 0 0.5rem 0; padding-bottom: 0.75rem; border-bottom: 1px solid #444; color: var(--color-text); font-size: 1.4rem; font-weight: 700; }
+        .course-group-header:first-of-type { margin-top: 0; }
+        .course-group-header i { vertical-align: middle; margin-right: 0.5rem; stroke: var(--color-accent); }
         .course-badge { position: absolute; top: 10px; right: 10px; background: #ff6b35; color: #fff; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; z-index: 10; }
         .course-badge.foundation { background: #28a745; }
         .course-badge.premium { background: #6f42c1; }
         .course-badge.core { background: #007bff; }
-        .course-card { position: relative; }
-        .cta-button.core-cta { background-color: var(--color-accent-deep); color: var(--color-text); }
-        @media(max-width: 767px) { .menu-toggle { display: block } .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-surface); flex-direction: column; padding: 32px; text-align: center; gap: 32px; height: calc(100vh - 73px); border-top: 1px solid var(--border-subtle) } .nav-links.active { display: flex } body.nav-open { overflow: hidden } }
+        
+        /* Back to Top Button from Version 2 */
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--color-accent); color: var(--color-bg); width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(255, 148, 8, 0.3); transition: all 0.3s ease; opacity: 0; visibility: hidden; transform: translateY(10px); z-index: 999; }
+        .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background: var(--color-accent-deep); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 148, 8, 0.4); }
+        .back-to-top i { width: 24px; height: 24px; stroke-width: 2.5px; }
+
+        /* Index Page Footer Style */
+        .section-divider{border-top:1px solid var(--border-subtle); padding-top: 4rem; margin-top: 4rem;}
+        
+        /* Responsive Media Queries */
+        @media(max-width: 767px) { 
+            .menu-toggle { display: block } 
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-surface); flex-direction: column; padding: 32px; text-align: center; gap: 32px; height: calc(100vh - 73px); border-top: 1px solid var(--border-subtle) } 
+            .nav-links.active { display: flex } 
+            body.nav-open { overflow: hidden }
+            .back-to-top { bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; }
+            .back-to-top i { width: 20px; height: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .bundle-grid { grid-template-columns: 1fr; }
+        }
+
     </style>
 
     <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -71,7 +184,7 @@
     </div>
 </nav>
 
-<!-- NEW HUB-HEADER WITH FOUR THEMES -->
+<!-- HEADER FROM VERSION 1 -->
 <header class="hub-header">
     <h1>The Ironclad Transformation System</h1>
     <p>Our learning system is built on four strategic themes that reconstruct masculine confidence from the ground up. <strong>Theme 1 courses are available now</strong>—master your internal game before advancing to interaction mechanics, emotional dynamics, and skill mastery.</p>
@@ -101,25 +214,41 @@
     <div class="promo-banner"><i data-lucide="flame"></i> INTRO PRICING: Limited Time Only – Get Maximum Traction at Minimum Cost! <i data-lucide="flame"></i></div>
 </header>
 
-<h2 class="section-title">Step 1: Choose Your Path (Recommended Bundles)</h2>
-<div class="bundle-grid" id="bundle-grid"></div>
-
-<h2 class="section-title">Or, Browse Individual Courses</h2>
-<div class="filter-container">
-    <button class="filter-btn active" data-filter="all">All Courses</button>
-    <button class="filter-btn" data-filter="mindset">Mindset</button>
-    <button class="filter-btn" data-filter="strategy">Strategy</button>
-    <button class="filter-btn" data-filter="action">Action</button>
+<!-- BODY CONTENT FROM VERSION 2 -->
+<h2 class="section-title">Step 1: Activate Your Transformation System</h2>
+<p class="section-subtitle">Choose the complete system designed for your current objective. This is the recommended path to mastery.</p>
+<div class="container">
+    <div class="bundle-grid" id="bundle-grid"></div>
 </div>
-<main class="course-grid" id="course-grid"></main>
 
-<!-- Main page logic -->
+<h2 class="section-title">The Complete Ironclad Arsenal: What's Inside</h2>
+<p class="section-subtitle">Every system above is built from these battle-tested protocols. Below is the full component library, demonstrating the depth of your training.</p>
+<div class="container">
+    <main class="course-grid" id="course-grid"></main>
+</div>
+
+<!-- BACK TO TOP BUTTON FROM VERSION 2 -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i data-lucide="arrow-up"></i>
+</button>
+
+<!-- FOOTER FROM INDEX PAGE -->
+<footer class="section-divider">
+    <div class="container" style="text-align:center; padding-bottom: 4rem;">
+        <p class="nav-logo" style="margin-bottom:16px">BOTGOSPEL</p>
+        <p>The loneliness pandemic wasn't an accident. Your liberation won't be either.</p>
+        <p class="footer-motto" style="margin-top:16px; font-weight: 700; color: var(--color-text-muted);">REBEL. SYSTEMISE. PROVE.</p>
+        <p style="font-size:.8rem;margin-top:32px;color:rgba(169,175,177,.5)">© 2025 BOTGospel. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- SCRIPT FROM VERSION 2 -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     // ---- ICONS RENDERED FIRST ---- //
     if (typeof lucide !== 'undefined') { lucide.createIcons(); }
 
-    // --- NAVIGATION TOGGLE LOGIC --- //
+    // --- COMPLETE NAVIGATION TOGGLE LOGIC --- //
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
     if (menuToggle && navMenu) {
@@ -133,20 +262,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ---- DATA ARRAYS ---- //
+    // ---- DATA & DOM REFERENCES ---- //
     const courseGrid = document.getElementById('course-grid');
     const bundleGrid = document.getElementById('bundle-grid');
-    const courses = [ {id:'conversation-engine-a7b8c9',title:'The Conversation Engine',subtitle:'Install the OCQ System to Never Run Out of Things to Say',category:'strategy',price:'Free',link:'conversation-engine-a7b8c9.html',icon:'message-circle',badge:'Foundation',description:'Eliminate awkward silences forever. This simple, repeatable three-step system (Observe, Comment, Question) fuels endless, natural conversation and builds genuine connection without trying hard.'}, {id:'the-abundance-architect-f2d9e0',title:'The Abundance Architect',subtitle:'Building a Dating Life of Genuine Choice',category:'mindset',price:'Free',link:'micro-the-abundance-architect-f2d9e0.html',icon:'users',badge:'Foundation',description:'Men with options don\'t beg. This course installs the mental framework of truly abundant men who never chase because they don\'t need to. Master the "Deck-Stacking Principle" that kills desperation at its source.'}, {id:'the-oneitis-cure-a4b8c1',title:'The Oneitis Cure',subtitle:'How to Kill Desperation and Reclaim Your Power',category:'mindset',price:'$13',payhipKey:'prj3B',icon:'shield-off',badge:'Core',description:'Stop being her emotional prisoner. This systematic deprogramming breaks the obsession cycle that makes you weak, needy, and repulsive to women. Install the "Detached Intent" mindset that makes you magnetic.'}, {id:'the-belief-engineer-c5a2b3',title:'The Belief Engineer',subtitle:'Rewrite Your Code, Rewrite Your Results',category:'mindset',price:'$13',payhipKey:'Gc0oR',icon:'cpu',badge:'Core',description:'Your beliefs are your operating system—and yours is infected with failure programming. This tactical guide re-engineers your core beliefs, the invisible code that dictates all your social outcomes.'}, {id:'the-reality-shaper-b3c7a5',title:'The Reality Shaper',subtitle:'How Your Mindset Creates Your Reality',category:'mindset',price:'$13',payhipKey:'aoZwK',icon:'repeat',badge:'Core',description:'Your thoughts create your reality—and your reality with women sucks because your thoughts are weak. This course identifies and destroys the self-sabotaging beliefs that make women lose interest before you even speak.'}, {id:'reality-arsenal-e6f7d8',title:'Reality Arsenal',subtitle:'Kill Delusion and Forge a Laser-Targeted Mission',category:'mindset',price:'$13',payhipKey:'KhrMw',icon:'compass',badge:'Core',description:'Delusion is the enemy of progress. This brutal self-assessment destroys the comfortable lies you tell yourself and forges a crystal-clear mission that governs every dating decision you make.'}, {id:'failure-forensics-g9h1i2',title:'Failure Forensics',subtitle:'Transform Setbacks into Strategic Advantages',category:'mindset',price:'$13',payhipKey:'cHnNB',icon:'search',badge:'Core',description:'Turn every rejection into data. This course teaches you to dissect failed interactions with surgical precision, identifying exactly where things went wrong and locking in new success patterns.'}, {id:'the-identity-mandate-9e1d6f',title:'The Identity Mandate',subtitle:'Pick Your Frame and Own It Completely',category:'mindset',price:'$13',payhipKey:'hFJSU',icon:'user-check',badge:'Core',description:'Stop being a chameleon. This course forces you to choose one powerful, authentic identity and own it completely. Women gravitate toward men who know exactly who they are.'}, {id:'presence-command-c4d5e6',title:'Presence Command',subtitle:'Own Any Room in 20 Seconds—Without Saying a Word',category:'action',price:'$13',payhipKey:'YMJ8y',icon:'zap',badge:'Core',description:'You lose her interest in the first 20 seconds. This course installs the "Authority Stack" (Ground, Spine, Voice) that makes you the most magnetic man in any room through pure physical presence.'}, {id:'premium-the-gaze-protocol-f4d9e1',title:'The Gaze Protocol',subtitle:'A masterclass on shifting from observer to actor',category:'action',price:'$13',payhipKey:'d9Trx',icon:'eye',badge:'Core',description:'Your eyes determine your role: spectator or participant? This masterclass eliminates the fear of "getting caught" looking and transforms social anxiety into powerful connection using the 3-Second Protocol.'}, {id:'digital-combat-h6g5f4',title:'Digital Combat',subtitle:'Master Texting to Build Attraction, Not Kill It',category:'strategy',price:'$13',payhipKey:'eOSN6',icon:'smartphone',badge:'Core',description:'Your texting game is killing your chances. This tactical guide transforms your phone into a weapon of attraction. Master the L-M-E protocol (Latency, Mirror, Emotion) that keeps her responding and escalating.'}, {id:'spec-leadership-f1e2d3',title:'SPEC Leadership',subtitle:'Turn Vague "Maybes" into Definite Plans',category:'strategy',price:'$13',payhipKey:'WPtpc',icon:'calendar-check',badge:'Core',description:'Stop being the "maybe" guy. The SPEC system (Specific, Precise, Exit, Confirmation) gives concrete invitations that demand respect and get definitive answers.'}, {id:'the-leadership-frame-e8f4c9',title:'The Leadership Frame',subtitle:'Correction, Standards, and the Vulnerability Paradox',category:'mindset',price:'$13',payhipKey:'U5xX7',icon:'user-cog',badge:'Core',description:'Leadership isn\'t about being nice—it\'s about being right. Master how to set non-negotiable standards and handle vulnerability tests without losing your frame.'}, {id:'the-14-day-forge-k9j8i7',title:'The 14-Day Forge',subtitle:'A Capstone Mission to Integrate and Prove Your Skills',category:'action',price:'$13',payhipKey:'Vl5ms',icon:'swords',badge:'Core',description:'Theory without practice is worthless. This 14-day mission forces you to execute every core skill in real-world scenarios, gather concrete data, and ensure true competence.'}, {id:'the-abundance-engine-c8b3a4',title:'The Abundance Engine',subtitle:'A 21-Day Program to Rewire Your Brain for Abundance',category:'action',price:'$27',payhipKey:'j7voa',icon:'trending-up',badge:'Premium',description:'A 21-day systematic rewiring program that installs abundance thinking at the neural level. Through structured daily practice, you\'ll create a self-sustaining abundance engine.'}, {id:'unbreakable-frame-c2b3a4',title:'Unbreakable Frame',subtitle:'A Masterclass on the Architecture of Social Reality',category:'mindset',price:'$27',payhipKey:'T4Glm',icon:'anchor',badge:'Premium',description:'Frame is your subjective reality projected onto the world. This masterclass explores its fundamental laws and forges a core so solid that it treats tests as entertainment and redirects pressure effortlessly.'}, {id:'the-frame-control-blueprint-d9e1f2',title:'The Frame Control Blueprint',subtitle:'Mastering Social Presence and Personal Boundaries',category:'mindset',price:'$27',payhipKey:'tC2uD',icon:'aperture',badge:'Premium',description:'A complete system for embodying authentic, unshakeable presence. Master the Response Matrix and forge your "Personal Constitution" of purpose, values, and non-negotiables.'}, {id:'the-high-value-identity-b7a5c6',title:'The High-Value Identity',subtitle:'A Masterclass on the Three Pillars of a Magnetic Man',category:'mindset',price:'$27',payhipKey:'yr60d',icon:'award',badge:'Premium',description:'The capstone course on identity transformation. Forge the Three Pillars: The Prize (your value), The Leader (your action), and The King (your mission). This is the final evolution from "doing" to "being."'}];
-
-    const bundles = [ { title: 'The Ironclad Mindset Pack', subtitle: 'Fix your internal game first.', price: '$47', strikethrough: '$78', payhipKey: 'fMT0H', includes: '<strong>Includes 6 Core Protocols:</strong> The Oneitis Cure, Belief Engineer, Reality Shaper, Reality Arsenal, Failure Forensics, & Identity Mandate.' }, { title: 'The Social Operator Pack', subtitle: 'Master your external game.', price: '$47', strikethrough: '$78', payhipKey: 'hqjbc', includes: '<strong>Includes 6 Core Protocols:</strong> Presence Command, Gaze Protocol, Digital Combat, SPEC Leadership, Leadership Frame, & The 14-Day Forge.' }, { title: 'The Premium Masterclass System', subtitle: 'Achieve true mastery.', price: '$67', strikethrough: '$108', payhipKey: 'MKs78', includes: '<strong>Includes all 4 Premium Masterclasses:</strong> The Abundance Engine, Unbreakable Frame, Frame Control Blueprint, & The High-Value Identity.' }, { title: 'The Complete Ironclad System', subtitle: 'The entire arsenal. The final step.', price: '$139', strikethrough: '$264', payhipKey: 'Lvf4N', includes: '<strong>Includes all 18 Courses.</strong> Get lifetime access to the complete transformation system.' } ];
-
-    function getButtonClass(price) { if (price === 'Free') return 'free-cta'; const val = parseInt(price.replace('$', '')); if (val <= 13) return 'core-cta'; if (val >= 27) return 'premium-cta'; return 'core-cta'; }
-    function getButtonText(price, cls) { if (cls === 'free-cta') return 'Start for Free'; if (cls === 'core-cta') return 'Get It Now'; if (cls === 'premium-cta') return 'Unlock Masterclass'; return 'Get Course'; }
+    
+    const courses = [ {id:'conversation-engine-a7b8c9',title:'The Conversation Engine',subtitle:'Install the OCQ System to Never Run Out of Things to Say',category:'strategy',price:'Free',link:'conversation-engine-a7b8c9.html',icon:'message-circle',badge:'Foundation',description:'Eliminate awkward silences forever. This simple, repeatable three-step system (Observe, Comment, Question) fuels endless, natural conversation and builds genuine connection without trying hard.'}, {id:'the-abundance-architect-f2d9e0',title:'The Abundance Architect',subtitle:'Building a Dating Life of Genuine Choice',category:'mindset',price:'Free',link:'micro-the-abundance-architect-f2d9e0.html',icon:'users',badge:'Foundation',description:'Men with options don\'t beg. This course installs the mental framework of truly abundant men who never chase because they don\'t need to. Master the "Deck-Stacking Principle" that kills desperation at its source.'}, {id:'the-oneitis-cure-a4b8c1',title:'The Oneitis Cure',subtitle:'How to Kill Desperation and Reclaim Your Power',category:'mindset',price:'$13',payhipKey:'prj3B',icon:'shield-off',badge:'Core',description:'Stop being her emotional prisoner. This systematic deprogramming breaks the obsession cycle that makes you weak, needy, and repulsive to women. Install the "Detached Intent" mindset that makes you magnetic.'}, {id:'the-belief-engineer-c5a2b3',title:'The Belief Engineer',subtitle:'Rewrite Your Code, Rewrite Your Results',category:'mindset',price:'$13',payhipKey:'Gc0oR',icon:'cpu',badge:'Core',description:'Your beliefs are your operating system—and yours is infected with failure programming. This tactical guide re-engineers your core beliefs, the invisible code that dictates all your social outcomes.'}, {id:'the-reality-shaper-b3c7a5',title:'The Reality Shaper',subtitle:'How Your Mindset Creates Your Reality',category:'mindset',price:'$13',payhipKey:'aoZwK',icon:'repeat',badge:'Core',description:'Your thoughts create your reality—and your reality with women sucks because your thoughts are weak. This course identifies and destroys the self-sabotaging beliefs that make women lose interest before you even speak.'}, {id:'reality-arsenal-e6f7d8',title:'Reality Arsenal',subtitle:'Kill Delusion and Forge a Laser-Targeted Mission',category:'mindset',price:'$13',payhipKey:'KhrMw',icon:'compass',badge:'Core',description:'Delusion is the enemy of progress. This brutal self-assessment destroys the comfortable lies you tell yourself and forges a crystal-clear mission that governs every dating decision you make.'}, {id:'failure-forensics-g9h1i2',title:'Failure Forensics',subtitle:'Transform Setbacks into Strategic Advantages',category:'mindset',price:'$13',payhipKey:'cHnNB',icon:'search',badge:'Core',description:'Turn every rejection into data. This course teaches you to dissect failed interactions with surgical precision, identifying exactly where things went wrong and locking in new success patterns.'}, {id:'the-identity-mandate-9e1d6f',title:'The Identity Mandate',subtitle:'Pick Your Frame and Own It Completely',category:'mindset',price:'$13',payhipKey:'hFJSU',icon:'user-check',badge:'Core',description:'Stop being a chameleon. This course forces you to choose one powerful, authentic identity and own it completely. Women gravitate toward men who know exactly who they are.'}, {id:'presence-command-c4d5e6',title:'Presence Command',subtitle:'Own Any Room in 20 Seconds—Without Saying a Word',category:'action',price:'$13',payhipKey:'YMJ8y',icon:'zap',badge:'Core',description:'You lose her interest in the first 20 seconds. This course installs the "Authority Stack" (Ground, Spine, Voice) that makes you the most magnetic man in any room through pure physical presence.'}, {id:'the-gaze-protocol-f4d9e1',title:'The Gaze Protocol',subtitle:'A masterclass on shifting from observer to actor',category:'action',price:'$13',payhipKey:'d9Trx',icon:'eye',badge:'Core',description:'Your eyes determine your role: spectator or participant? This masterclass eliminates the fear of "getting caught" looking and transforms social anxiety into powerful connection using the 3-Second Protocol.'}, {id:'digital-combat-h6g5f4',title:'Digital Combat',subtitle:'Master Texting to Build Attraction, Not Kill It',category:'strategy',price:'$13',payhipKey:'eOSN6',icon:'smartphone',badge:'Core',description:'Your texting game is killing your chances. This tactical guide transforms your phone into a weapon of attraction. Master the L-M-E protocol (Latency, Mirror, Emotion) that keeps her responding and escalating.'}, {id:'spec-leadership-f1e2d3',title:'SPEC Leadership',subtitle:'Turn Vague "Maybes" into Definite Plans',category:'strategy',price:'$13',payhipKey:'WPtpc',icon:'calendar-check',badge:'Core',description:'Stop being the "maybe" guy. The SPEC system (Specific, Precise, Exit, Confirmation) gives concrete invitations that demand respect and get definitive answers.'}, {id:'the-leadership-frame-e8f4c9',title:'The Leadership Frame',subtitle:'Correction, Standards, and the Vulnerability Paradox',category:'mindset',price:'$13',payhipKey:'U5xX7',icon:'user-cog',badge:'Core',description:'Leadership isn\'t about being nice—it\'s about being right. Master how to set non-negotiable standards and handle vulnerability tests without losing your frame.'}, {id:'the-14-day-forge-k9j8i7',title:'The 14-Day Forge',subtitle:'A Capstone Mission to Integrate and Prove Your Skills',category:'action',price:'$13',payhipKey:'Vl5ms',icon:'swords',badge:'Core',description:'Theory without practice is worthless. This 14-day mission forces you to execute every core skill in real-world scenarios, gather concrete data, and ensure true competence.'}, {id:'the-abundance-engine-c8b3a4',title:'The Abundance Engine',subtitle:'A 21-Day Program to Rewire Your Brain for Abundance',category:'action',price:'$27',payhipKey:'j7voa',icon:'trending-up',badge:'Premium',description:'A 21-day systematic rewiring program that installs abundance thinking at the neural level. Through structured daily practice, you\'ll create a self-sustaining abundance engine.'}, {id:'unbreakable-frame-c2b3a4',title:'Unbreakable Frame',subtitle:'A Masterclass on the Architecture of Social Reality',category:'mindset',price:'$27',payhipKey:'T4Glm',icon:'anchor',badge:'Premium',description:'Frame is your subjective reality projected onto the world. This masterclass explores its fundamental laws and forges a core so solid that it treats tests as entertainment and redirects pressure effortlessly.'}, {id:'the-frame-control-blueprint-d9e1f2',title:'The Frame Control Blueprint',subtitle:'Mastering Social Presence and Personal Boundaries',category:'mindset',price:'$27',payhipKey:'tC2uD',icon:'aperture',badge:'Premium',description:'A complete system for embodying authentic, unshakeable presence. Master the Response Matrix and forge your "Personal Constitution" of purpose, values, and non-negotiables.'}, {id:'the-high-value-identity-b7a5c6',title:'The High-Value Identity',subtitle:'A Masterclass on the Three Pillars of a Magnetic Man',category:'mindset',price:'$27',payhipKey:'yr60d',icon:'award',badge:'Premium',description:'The capstone course on identity transformation. Forge the Three Pillars: The Prize (your value), The Leader (your action), and The King (your mission). This is the final evolution from "doing" to "being."'}];
+    const bundles = [ { id: 'mindset', title: 'The Ironclad Mindset Pack', subtitle: 'Fix your internal game first.', price: '$47', strikethrough: '$78', payhipKey: 'fMT0H', includes: '<strong>Includes 6 Core Protocols:</strong> The Oneitis Cure, Belief Engineer, Reality Shaper, Reality Arsenal, Failure Forensics, & Identity Mandate.' }, { id: 'operator', title: 'The Social Operator Pack', subtitle: 'Master your external game.', price: '$47', strikethrough: '$78', payhipKey: 'hqjbc', includes: '<strong>Includes 6 Core Protocols:</strong> Presence Command, Gaze Protocol, Digital Combat, SPEC Leadership, Leadership Frame, & The 14-Day Forge.' }, { id: 'premium', title: 'The Premium Masterclass System', subtitle: 'Achieve true mastery.', price: '$67', strikethrough: '$108', payhipKey: 'MKs78', includes: '<strong>Includes all 4 Premium Masterclasses:</strong> The Abundance Engine, Unbreakable Frame, Frame Control Blueprint, & The High-Value Identity.' }, { id: 'complete', title: 'The Complete Ironclad System', subtitle: 'The entire arsenal. The final step.', price: '$139', strikethrough: '$264', payhipKey: 'Lvf4N', includes: '<strong>Includes all 18 Courses.</strong> Get lifetime access to the complete transformation system.' } ];
 
     function renderBundles() {
+        if (!bundleGrid) return;
         bundleGrid.innerHTML = '';
         bundles.forEach(b => {
-            const card = `<div class="bundle-card">
+            const isFlagship = b.id === 'complete';
+            const flagshipClass = isFlagship ? 'is-flagship' : '';
+            const badgeHTML = isFlagship ? '<div class="bundle-badge">BEST VALUE</div>' : '';
+
+            const card = `<div class="bundle-card ${flagshipClass}">
+                ${badgeHTML}
                 <h3>${b.title}</h3>
                 <p class="bundle-subtitle">${b.subtitle}</p>
                 <p class="bundle-includes">${b.includes}</p>
@@ -154,83 +286,93 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="price">${b.price}</span>
                     <span class="strikethrough">${b.strikethrough}</span>
                 </div>
-                <a href="https://payhip.com/b/${b.payhipKey}" class="cta-button premium-cta bundle-cta payhip-buy-button" data-theme="none" data-product="${b.payhipKey}">Unlock Now</a>
+                <a href="https://payhip.com/b/${b.payhipKey}" class="cta-button premium-cta bundle-cta payhip-buy-button" data-theme="none" data-product="${b.payhipKey}">Activate System</a>
             </div>`;
             bundleGrid.insertAdjacentHTML('beforeend', card);
         });
     }
 
     function renderCourses() {
+        if (!courseGrid) return;
         courseGrid.innerHTML = '';
-        courses.forEach(c => {
-            const isFree = c.price === 'Free';
-            const btnClass = getButtonClass(c.price);
-            const btnText = getButtonText(c.price, btnClass);
-            const badgeHTML = c.badge ? `<div class="course-badge ${c.badge.toLowerCase()}">${c.badge}</div>` : '';
-            const cta = isFree
-                ? `<a href="${c.link}" class="cta-button ${btnClass}">${btnText}</a>`
-                : `<a href="https://payhip.com/b/${c.payhipKey}" class="cta-button ${btnClass} payhip-buy-button" data-theme="none" data-product="${c.payhipKey}">${btnText}</a>`;
 
-            const card = `<div class="course-card" data-category="${c.category}">
-                ${badgeHTML}
-                <div class="card-header">
-                    <i data-lucide="${c.icon}"></i>
-                    <div class="category-tag">${c.category}</div>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">${c.title}</h3>
-                    <p class="card-subtitle">${c.subtitle}</p>
-                    <div class="card-details">
-                        <p>${c.description}</p>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button class="details-btn"><span>See What You'll Master</span><i data-lucide="chevron-down"></i></button>
-                    <div class="price-action-wrapper">
-                        <div class="price-tag ${isFree ? 'free' : 'paid'}">${c.price}</div>
-                        ${cta}
-                    </div>
-                </div>
-            </div>`;
-            courseGrid.insertAdjacentHTML('beforeend', card);
+        const courseGroups = [
+            { id: 'foundation', title: 'Foundation Courses (Free Lead Magnets)', icon: 'gift' },
+            { id: 'mindset', title: 'Protocols in the Mindset Pack', icon: 'brain-circuit' },
+            { id: 'operator', title: 'Protocols in the Social Operator Pack', icon: 'target' },
+            { id: 'premium', title: 'Protocols in the Premium Masterclass System', icon: 'gem' }
+        ];
+
+        const mindsetPackTitles = ['The Oneitis Cure', 'The Belief Engineer', 'The Reality Shaper', 'Reality Arsenal', 'Failure Forensics', 'The Identity Mandate'];
+        const operatorPackTitles = ['Presence Command', 'The Gaze Protocol', 'Digital Combat', 'SPEC Leadership', 'The Leadership Frame', 'The 14-Day Forge'];
+        
+        courseGroups.forEach(group => {
+            let coursesInGroup = [];
+            if (group.id === 'foundation') {
+                coursesInGroup = courses.filter(c => c.price === 'Free');
+            } else if (group.id === 'mindset') {
+                coursesInGroup = courses.filter(c => mindsetPackTitles.includes(c.title));
+            } else if (group.id === 'operator') {
+                coursesInGroup = courses.filter(c => operatorPackTitles.includes(c.title));
+            } else if (group.id === 'premium') {
+                coursesInGroup = courses.filter(c => c.badge === 'Premium');
+            }
+
+            if (coursesInGroup.length > 0) {
+                courseGrid.insertAdjacentHTML('beforeend', `<h3 class="course-group-header"><i data-lucide="${group.icon}"></i>${group.title}</h3>`);
+                coursesInGroup.forEach(c => {
+                    const isFree = c.price === 'Free';
+                    let footerContent;
+
+                    if (isFree) {
+                        footerContent = `<div class="price-action-wrapper"><a href="${c.link}" class="cta-button free-cta">Start for Free</a></div>`;
+                    } else {
+                        footerContent = `<div class="course-bundle-info">Included in <strong>Complete System</strong></div>`;
+                    }
+                    
+                    const badgeHTML = c.badge ? `<div class="course-badge ${c.badge.toLowerCase()}">${c.badge}</div>` : '';
+                    const card = `<div class="course-card" data-category="${c.category}">
+                        ${badgeHTML}
+                        <div class="card-header"><i data-lucide="${c.icon}"></i><div class="category-tag">${c.category}</div></div>
+                        <div class="card-body">
+                            <h3 class="card-title">${c.title}</h3>
+                            <p class="card-subtitle">${c.subtitle}</p>
+                            <div class="card-details"><p>${c.description}</p></div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="details-btn"><span>See Details</span><i data-lucide="chevron-down"></i></button>
+                            ${footerContent}
+                        </div>
+                    </div>`;
+                    courseGrid.insertAdjacentHTML('beforeend', card);
+                });
+            }
         });
         if (typeof lucide !== 'undefined') { lucide.createIcons(); }
     }
+    
+    if (courseGrid) {
+        courseGrid.addEventListener('click', function(e) {
+            const detailsBtn = e.target.closest('.details-btn');
+            if (detailsBtn) {
+                const card = detailsBtn.closest('.course-card');
+                const wasActive = card.classList.contains('details-active');
+                
+                courseGrid.querySelectorAll('.course-card.details-active').forEach(activeCard => {
+                    if (activeCard !== card) {
+                        activeCard.classList.remove('details-active');
+                    }
+                });
+                
+                card.classList.toggle('details-active');
 
-    // Filter functionality
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            const filter = this.getAttribute('data-filter');
-            document.querySelectorAll('.course-card').forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
+                if (!wasActive) {
+                    setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300);
                 }
-            });
-        });
-    });
-
-    // Details toggle functionality
-    courseGrid.addEventListener('click', function(e) {
-        const detailsBtn = e.target.closest('.details-btn');
-        if (detailsBtn) {
-            const card = detailsBtn.closest('.course-card');
-            const wasActive = card.classList.contains('details-active');
-            card.classList.toggle('details-active');
-            if (!wasActive) {
-                setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
             }
-        }
-    });
+        });
+    }
 
-    // Initial Render
-    renderBundles();
-    renderCourses();
-
-    // ---- PAYHIP HANDLING (unchanged) ---- //
     document.body.addEventListener('click', function(e) {
         const checkoutButton = e.target.closest('.payhip-buy-button');
         if (!checkoutButton) return;
@@ -244,9 +386,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Initial Render
+    renderBundles();
+    renderCourses();
+
+    const backToTopButton = document.getElementById('backToTop');
+
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
 </script>
-
 </body>
 </html>
 
